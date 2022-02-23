@@ -1,0 +1,259 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300&display=swap");
+/* colors */
+$primary: #00303d;
+$secondary: #a9d6e5;
+$header: #00607a;
+$third: #e76f51ff;
+$white: #f6f6f6;
+$black: #252422;
+$black-50: rgba(0, 0, 0, 0.4);
+$overlay: #25242285;
+$red: #f03d43;
+$blue: #0d91fd;
+$gray-100: #f1f7fd;
+$gray-200: #e5e5e5;
+$gray-300: #a8a8a8;
+$gray-disable: #e5e5e570;
+$openSans: "Open Sans", sans-serif;
+$alegreya: "Alegreya", serif;
+:export {
+  primary: $primary;
+  secondary: $secondary;
+  third: $third;
+  white: $white;
+  black: $black;
+  black_50: $black-50;
+  openSans: $openSans;
+  alegreya: $alegreya;
+  header: $header;
+  red: $red;
+  blue: $blue;
+  gray_100: $gray-100;
+  gray_200: $gray-200;
+  gray_300: $gray-300;
+  gray_disable: $gray-disable;
+  overlay: $overlay;
+}
+
+h1 {
+  font-family: $openSans;
+  font-weight: 800;
+  font-size: 48px;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $openSans;
+  font-weight: 600;
+  font-size: 32px;
+}
+p {
+  font-family: $alegreya;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+a {
+  color: $third;
+  font-family: $openSans;
+  font-size: 14px;
+  text-decoration: none;
+  &:hover {
+    color: $third;
+    text-decoration: none;
+  }
+}
+
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid $black;
+  margin: 0 5px;
+  &:focus {
+    outline: none;
+    border-bottom-color: $third;
+  }
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid $gray-200;
+}
+
+@mixin custom-scroller {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  /* the "track" of the scroll you can change to */
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0.6rem gray;
+  }
+
+  /* the buttons, top and bottom, of the scroll bar... single vs doublesided buttons */
+  ::-webkit-scrollbar-button:single-button {
+    height: 12px;
+    display: block;
+  }
+
+  /* decrement means 'decrease', so 'less scrolling' is the "up arrow" => decrement && "down arrow" => increment */
+  ::-webkit-scrollbar-button:single-button:increment {
+    // background-image: url(~images/general/icons/scrollbar-arrow-down.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  ::-webkit-scrollbar-button:single-button:decrement {
+    // background-image: url(~images/general/icons/scrollbar-arrow-up.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  /* Scroll handle (the part you drag) */
+  &::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 5px;
+  }
+
+  /* Scroll handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: gray;
+  }
+}
+.custom-scroller {
+  scroll-behavior: smooth 0.9s ease-out;
+  @include custom-scroller;
+}
+
+.ReactModal__Overlay {
+  z-index: 11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// .react-page-controls-mode-toggle-control {
+//   margin: 8px;
+// }
+
+.react-page-controls-mode-toggle-control-group {
+  // opacity: 1;
+  // transition: 0.5s all ease-in-out 0s;
+  position: relative;
+  > div {
+    // pointer-events: initial;
+    // justify-content: center !important;
+    // align-items: center !important;
+    // padding: 0px !important;
+    // width: 0;
+    // position: fixed !important;
+    // top: 50%;
+    // transform: translateY(-50%) !important;
+    // right: 0;
+  }
+  top: 50% !important;
+  transform: translateY(-50%);
+  right: 0 !important;
+  z-index: 4;
+  bottom: 0px;
+  display: block !important;
+  max-height: 100%;
+  position: absolute;
+}
+
+.react-page-controls-trash {
+  display: none;
+}
+
+// .react-page-editable .react-page-cell-insert-new {
+//   display: none !important;
+// }
+
+.react-page-editable .react-page-cell-insert-new:after {
+  font-size: 3em !important;
+  background-color: transparent !important;
+  color: $black !important;
+}
+.react-page-cell-handle {
+  display: none !important;
+}
+.react-page-cell-handle-drag-enabled {
+  display: none !important;
+}
+.react-page-editable {
+  min-height: auto !important;
+}
+
+.react-page-editable-mode-preview {
+  ~ div {
+    opacity: 0.2 !important;
+  }
+}
+.react-page-controls-mode-toggle-control {
+  &:last-of-type {
+    display: none !important;
+  }
+  .react-page-controls-mode-toggle-button-inner {
+    // margin: 0 !important;
+    // float: right !important;
+    > button {
+      // border-radius: 0 !important;
+      background-color: $third;
+      svg {
+        width: 0.8em !important;
+      }
+    }
+  }
+}
+.react-page-controls-mode-toggle-control {
+  .react-page-controls-mode-toggle-button-description {
+    display: none !important;
+  }
+}
+
+.react-page-plugins-content-slate-inline-toolbar {
+  display: none;
+}
+
+.controlIsVisible {
+  .react-page-controls-mode-toggle-control-group {
+    opacity: 0;
+    transition: 0.3s all ease-in-out 0s;
+    right: -100% !important;
+    visibility: hidden;
+    width: 0;
+    display: none !important;
+    > div {
+      pointer-events: none;
+    }
+  }
+}
+.reactPage-MuiIconButton-colorPrimary-300 {
+  color: $third !important;
+}
+.reactPage-MuiIconButton-colorSecondary-301 {
+  color: $red !important;
+}
+.reactPage-MuiSwitch-colorPrimary-315.reactPage-MuiSwitch-checked-318 {
+  color: $third !important;
+}
+.reactPage-MuiSwitch-colorPrimary-315.reactPage-MuiSwitch-checked-318
+  + .reactPage-MuiSwitch-track-322 {
+  background-color: $third !important;
+}

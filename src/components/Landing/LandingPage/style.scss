@@ -1,0 +1,174 @@
+@import "../../../globalStyles.scss";
+
+.LandingContainer {
+  .custom-title {
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .CategoryLandingContainer__hero {
+    height: 100%;
+    .item.active .img {
+      z-index: 3;
+      opacity: 0;
+    }
+    .item.active {
+      z-index: 3;
+      background-color: $white !important;
+      cursor: pointer;
+      overflow: hidden;
+      background-image: none !important;
+    }
+    .item .back-title {
+      display: block;
+      position: relative;
+      text-align: center;
+      font-style: italic;
+      opacity: 0;
+      margin-bottom: 0;
+    }
+    .item.active .back-title {
+      opacity: 1;
+    }
+    .item.active:hover .front-title {
+      display: none;
+    }
+    .item .front-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      margin: 0;
+      text-align: center;
+      color: $white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0);
+      background: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      opacity: 1;
+    }
+    .item:not(.active) .front-title {
+      // opacity: 0;
+    }
+    .categories {
+      position: relative;
+      flex: 1 1 30%;
+      height: auto;
+      align-self: stretch;
+      justify-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      float: left;
+      background-size: cover;
+      background-position: top;
+      overflow: hidden;
+      visibility: visible;
+      opacity: 1;
+      margin: 15px;
+      .img {
+        background-size: contain;
+        background-position: center;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+      }
+
+      .custom-border {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 4;
+        border: 2.5px solid $white;
+      }
+      .custom-check {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 15px;
+        padding: 5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        background-color: $white;
+        z-index: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          color: $primary;
+        }
+      }
+    }
+    .hide {
+      pointer-events: none;
+      &:hover {
+        pointer-events: none;
+      }
+    }
+    .hide:not(.isSelected) {
+      transition: all 1s ease-out 0s;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .CategoryLandingContainer__container {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      .CategoryLandingContainer__container-items {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .overlay-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 2;
+        pointer-events: none;
+        .img {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+        }
+      }
+      .overlay-image.active {
+        visibility: visible;
+        -webkit-transition-delay: 0s;
+        transition-delay: 0s;
+        opacity: 1;
+        transform: scale(1);
+        -webkit-transition: visibility 0s, opacity 0.3s, background 0.3s ease,
+          -webkit-transform 4.5s ease;
+        transition: visibility 0s, opacity 0.3s, background 0.3s ease,
+          -webkit-transform 4.5s ease;
+        transition: visibility 0s, opacity 0.3s, background 0.3s ease,
+          transform 4.5s ease;
+        transition: visibility 0s, opacity 0.3s, background 0.3s ease,
+          transform 4.5s ease, -webkit-transform 4.5s ease;
+      }
+    }
+  }
+  .custom-continue {
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}

@@ -1,0 +1,84 @@
+@import "../../globalStyles.scss";
+
+.LandingContainer {
+  position: relative;
+  height: 100%;
+  background-color: $white;
+  // padding: 30px;
+}
+.LandingContainer__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .LandingContainer__wrapper-body {
+    height: 98%;
+    width: 98%;
+    .link-edit {
+      cursor: pointer;
+      display: flex;
+      background-color: $white;
+      color: $black;
+      padding: 10px;
+      //   position: absolute;
+      bottom: 0;
+      left: 0;
+      margin: 15px;
+      border-radius: 100%;
+      z-index: 4;
+      &:hover {
+        background-color: $third;
+        color: $white;
+      }
+    }
+    .control-preview {
+      cursor: pointer;
+      display: flex;
+      padding: 10px;
+      // position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 15px;
+      // border-radius: 100%;
+      z-index: 4;
+      &:hover {
+        background-color: $third;
+        color: $white;
+      }
+    }
+    .link-preview {
+      cursor: pointer;
+      display: flex;
+      background-color: $white;
+      color: $black;
+      padding: 10px;
+      // position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 15px;
+      border-radius: 100%;
+      z-index: 4;
+      &:hover {
+        background-color: $third;
+        color: $white;
+      }
+    }
+    .link-preview.active {
+      background-color: $third;
+      color: $white;
+      display: flex;
+    }
+    .custom-controls {
+      display: flex;
+      // justify-content: center;
+      // align-items: center;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+  height: 100%;
+  background-color: $white;
+  -webkit-box-shadow: 10px -3px 15px 4px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 10px -3px 15px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px -3px 15px 4px rgba(0, 0, 0, 0.1);
+}
