@@ -59,7 +59,6 @@ export class LandingPageContainer extends Component {
                     />
                     {/* Front of the square */}
                     <p className="front-title">{item.frontText}</p>
-                    {/* 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 */}
                     <span className="custom-border"></span>
                 </div>
             );
