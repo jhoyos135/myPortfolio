@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { data } from "./data";
-import LandingContainer from '../LandingContainer';
-import './style.scss'
+import './style.scss';
 
 
 export class LandingPageContainer extends Component {
@@ -11,29 +10,51 @@ export class LandingPageContainer extends Component {
         isActive: null,
         isSelected: null,
         color: "",
-        transitionClass: false
+        transitionClass: false,
+        loading: true
     };
 
+    routeAfterTimerEnds = (item) => {
+        this.timer = setInterval(() => this.setState(() => ({ loading: false, item })), 1500);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.loading !== prevState.loading) {
+            this.navigateTo(this.state.item);
+        }
+    }
+
     handleMouseOver = (e, item) => {
-        this.setState(() => ({
-            isActive: item.id,
-            color: item.color,
-        }));
+        if (!this.state.isSelected) {
+            this.setState(() => ({
+                isActive: item.id,
+                color: item.color,
+            }));
+        }
     };
     handleMouseOut = (e, item) => {
-        this.setState(() => ({
-            isActive: "",
-            color: "",
-        }));
+        if (!this.state.isSelected) {
+            this.setState(() => ({
+                isActive: "",
+                color: "",
+            }));
+        }
     };
 
     handleSelection = (e, item) => {
-        console.log(e.target, item)
-        this.setState({ transitionClass: true, isSelected: item.id, isActive: item.id, color: item.color })
+        this.setState(() => {
+            return { transitionClass: true, isSelected: item.id }
+        }, this.routeAfterTimerEnds(item)
+        )
+    }
+
+    navigateTo = (item) => {
+        const { history } = this.props;
+        history.push(`/${item.route}`)
     }
 
     renderCategories = () => {
-        const { categories, isActive, isSelected } = this.state;
+        const { isActive, isSelected } = this.state;
 
         return data?.map((item) => {
             return (
@@ -46,7 +67,7 @@ export class LandingPageContainer extends Component {
                         "categories item": true,
                         active: item.id === isActive,
                         isSelected: item.id === isSelected,
-                        hide: this.state.transitionClass
+                        hide: this.state.transitionClass && item.id !== isSelected,
                     })}
                 >
                     {/* Back of the square */}
@@ -58,7 +79,7 @@ export class LandingPageContainer extends Component {
                         style={{ backgroundColor: item.color }}
                     />
                     {/* Front of the square */}
-                    <p className="front-title">{item.frontText}</p>
+                    <h1 className="front-title">{item.frontText}</h1>
                     <span className="custom-border"></span>
                 </div>
             );
@@ -66,12 +87,15 @@ export class LandingPageContainer extends Component {
     };
 
     render() {
-        const { isActive, color } = this.state;
+        const { isActive, color, isSelected } = this.state;
         return (
             <>
                 <div className="CategoryLandingContainer__hero">
                     <div className="CategoryLandingContainer__container">
-                        <div className="CategoryLandingContainer__container-items">
+                        <div className={classnames({
+                            'CategoryLandingContainer__container-items': true,
+                            'hasSelection': isSelected
+                        })}>
                             {this.renderCategories()}
                         </div>
                         {/* Hero Image overlay */}

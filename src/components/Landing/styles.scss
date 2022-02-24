@@ -11,8 +11,9 @@
   justify-content: center;
   align-items: center;
   .LandingContainer__wrapper-body {
-    height: 98%;
+    height: 96%;
     width: 98%;
+    background-color: $white;
     .link-edit {
       cursor: pointer;
       display: flex;
@@ -77,7 +78,7 @@
     }
   }
   height: 100%;
-  background-color: $white;
+  background-color: $third;
   -webkit-box-shadow: 10px -3px 15px 4px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 10px -3px 15px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 10px -3px 15px 4px rgba(0, 0, 0, 0.1);

@@ -3,8 +3,8 @@
 $primary: #00303d;
 $secondary: #a9d6e5;
 $header: #00607a;
-$third: #e76f51ff;
-$white: #f6f6f6;
+$third: #333;
+$white: #f7f4e9;
 $black: #252422;
 $black-50: rgba(0, 0, 0, 0.4);
 $overlay: #25242285;
@@ -16,6 +16,8 @@ $gray-300: #a8a8a8;
 $gray-disable: #e5e5e570;
 $openSans: "Open Sans", sans-serif;
 $alegreya: "Alegreya", serif;
+$herofontSize: 4em;
+$letterSpacing: 3px;
 :export {
   primary: $primary;
   secondary: $secondary;
@@ -33,6 +35,8 @@ $alegreya: "Alegreya", serif;
   gray_300: $gray-300;
   gray_disable: $gray-disable;
   overlay: $overlay;
+  heroFontSize: $herofontSize;
+  letterSpacing: $letterSpacing;
 }
 
 h1 {
@@ -47,7 +51,7 @@ h5,
 h6 {
   font-family: $openSans;
   font-weight: 600;
-  font-size: 32px;
+  font-size: 28px;
 }
 p {
   font-family: $alegreya;

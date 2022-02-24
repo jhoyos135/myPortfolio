@@ -1,13 +1,10 @@
 import './App.css';
-import { LandingPageContainer } from './components/Landing/LandingPage/LandingPageContainer'
-import { LandingContainer } from './components/Landing/LandingContainer'
+import Router from './Router/Router';
 
 function App() {
   return (
     <div className="App">
-      <LandingContainer>
-        <LandingPageContainer />
-      </LandingContainer>
+      <Router />
     </div>
   );
 }
