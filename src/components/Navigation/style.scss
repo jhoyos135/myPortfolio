@@ -1,0 +1,23 @@
+@import "../../globalStyles.scss";
+
+.FloatingNav__next {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 15px;
+  cursor: pointer;
+  font-size: 3em;
+  color: $white;
+  font-weight: bold;
+}
+
+.FloatingNav__prev {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 15px;
+  cursor: pointer;
+  font-size: 3em;
+  color: $white;
+  font-weight: bold;
+}

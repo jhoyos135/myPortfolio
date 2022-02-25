@@ -13,6 +13,7 @@ export class SkillsLandingPage extends Component {
     render() {
         return (
             <LandingPageWrapper
+                {...this.props}
                 leftContent={[
                     {
                         background: 'pink',

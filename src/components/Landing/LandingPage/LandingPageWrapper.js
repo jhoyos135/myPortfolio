@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import FloatingNav from '../../Navigation/FloatingNav';
 
 import './style.scss'
 
@@ -29,7 +29,7 @@ export class LandingPageWrapper extends Component {
 
     renderLeftContent = () => {
         const { leftContent } = this.props;
-        return leftContent.map((x) => {
+        return leftContent.map((x, index) => {
             // scrollTopPosition is where you want the node to start and scrollBottomPosition where you want it to end
             // Infinity means is the last scrollable content
             if (
@@ -38,6 +38,7 @@ export class LandingPageWrapper extends Component {
             ) {
                 return (
                     <div
+                        key={index}
                         id={x.id}
                         style={{
                             height: '100%',
@@ -56,13 +57,14 @@ export class LandingPageWrapper extends Component {
     render() {
         const { rightContent } = this.props;
         return (
-            <div className='LandingPageWrapper'>
+            <div className='LandingPageWrapper' style={{ position: 'relative' }}>
                 <div className='LandingPageWrapper__left'>
                     <div className='LandingPageWrapper__left-content'>
                         {
                             this.renderLeftContent()
                         }
                     </div>
+                    <FloatingNav {...this.props} />
                 </div>
                 <div
                     className='LandingPageWrapper__right custom-scroller'
@@ -71,9 +73,9 @@ export class LandingPageWrapper extends Component {
                     ref={this.scrollRef}
                 >
                     {
-                        rightContent.map((x) => {
+                        rightContent.map((x, index) => {
                             return (
-                                <div id={x.id} className='LandingPageWrapper__right-content'>
+                                <div key={index} id={x.id} className='LandingPageWrapper__right-content'>
                                     {x.node}
                                 </div>
                             )

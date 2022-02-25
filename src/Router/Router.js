@@ -11,7 +11,6 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 export class Router extends Component {
     render() {
-        console.log(this.props)
         return (
             <>
                 <BrowserRouter>

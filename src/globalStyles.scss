@@ -3,8 +3,8 @@
 $primary: #00303d;
 $secondary: #a9d6e5;
 $header: #00607a;
-$third: #333;
-$white: #f7f4e9;
+$third: #40434e;
+$white: #fffffa;
 $black: #252422;
 $black-50: rgba(0, 0, 0, 0.4);
 $overlay: #25242285;
@@ -99,8 +99,8 @@ hr {
 
   /* width */
   &::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 0.7rem;
+    height: 0.7rem;
   }
 
   /* the "track" of the scroll you can change to */

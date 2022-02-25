@@ -13,6 +13,7 @@ export class ContactLandingPage extends Component {
     render() {
         return (
             <LandingPageWrapper
+                {...this.props}
                 leftContent={[
                     {
                         background: 'purple',

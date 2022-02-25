@@ -15,7 +15,9 @@ export class LandingPageContainer extends Component {
     };
 
     routeAfterTimerEnds = (item) => {
-        this.timer = setInterval(() => this.setState(() => ({ loading: false, item })), 1500);
+        //  simulates fetch request since this is only a client side website and there is no MW api request to wait for
+        // done for animation purposes
+        this.timer = setInterval(() => this.setState(() => ({ loading: false, item })), 1200);
     }
 
     componentDidUpdate(prevProps, prevState) {

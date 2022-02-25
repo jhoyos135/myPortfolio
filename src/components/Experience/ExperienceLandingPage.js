@@ -13,6 +13,7 @@ export class ExperienceLandingPage extends Component {
     render() {
         return (
             <LandingPageWrapper
+                {...this.props}
                 leftContent={[
                     {
                         background: 'red',
