@@ -9,30 +9,30 @@ const StyledHeader = styled.h1`
 `;
 
 
-export class AboutLandingPage extends Component {
+export class ContactLandingPage extends Component {
     render() {
         return (
             <LandingPageWrapper
                 leftContent={[
                     {
-                        background: 'blue',
+                        background: 'purple',
                         scrollTopPosition: 0,
                         scrollBottomPosition: 499,
-                        id: 'blue',
+                        id: 'purple',
                         node: (
                             <StyledHeader>
-                                {'ABOUT'}
+                                {'CONTACT'}
                             </StyledHeader>
                         )
                     },
                     {
-                        background: 'green',
+                        background: 'orange',
                         scrollTopPosition: 500,
                         scrollBottomPosition: Infinity,
-                        id: 'green',
+                        id: 'orange',
                         node: (
                             <StyledHeader>
-                                {'ABOUT'}
+                                {'CONTACT'}
                             </StyledHeader>
                         )
                     }
@@ -69,4 +69,4 @@ export class AboutLandingPage extends Component {
     }
 }
 
-export default AboutLandingPage
+export default ContactLandingPage

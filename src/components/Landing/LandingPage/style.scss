@@ -210,16 +210,6 @@
   .LandingPageWrapper__left {
     position: relative;
     box-shadow: -3px -3px 22px rgba(51, 51, 51, 1.109%);
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 1px;
-      height: 100%;
-      background-color: black;
-      right: 0;
-      top: 0;
-    }
     .LandingPageWrapper__left-content {
       height: 100%;
     }
