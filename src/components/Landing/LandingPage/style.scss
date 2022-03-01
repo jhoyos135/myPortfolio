@@ -210,7 +210,11 @@
   .LandingPageWrapper__left {
     position: relative;
     box-shadow: -3px -3px 22px rgba(51, 51, 51, 1.109%);
+    max-width: 50%;
     .LandingPageWrapper__left-content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr 1fr 1fr;
       height: 100%;
     }
   }

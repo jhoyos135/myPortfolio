@@ -3,7 +3,6 @@ import LandingPageWrapper from '../Landing/LandingPage/LandingPageWrapper';
 import styled from 'styled-components';
 import colors from '../../globalStyles.scss'
 const StyledHeader = styled.h1`
-  color: ${colors.white};
   font-size: ${colors.heroFontSize};
   letter-spacing: ${colors.letterSpacing};
 `;
@@ -14,23 +13,21 @@ export class SkillsLandingPage extends Component {
         return (
             <LandingPageWrapper
                 {...this.props}
+                leftStyles={{
+                    background: 'pink'
+                }}
                 leftContent={[
                     {
-                        background: 'pink',
                         scrollTopPosition: 0,
-                        scrollBottomPosition: 499,
-                        id: 'pink',
-                        node: (
-                            <StyledHeader>
-                                {'SKILLS'}
-                            </StyledHeader>
-                        )
-                    },
-                    {
-                        background: 'purple',
-                        scrollTopPosition: 500,
                         scrollBottomPosition: Infinity,
-                        id: 'purple',
+                        id: 'pink',
+                        outerStyles: {
+                            color: colors.white,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            gridColumn: '1/4'
+                        },
                         node: (
                             <StyledHeader>
                                 {'SKILLS'}

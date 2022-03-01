@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import FloatingNav from '../../Navigation/FloatingNav';
 
+import styled from 'styled-components'
 import './style.scss'
+
+const StyledDiv = styled.div`
+    position: relative;
+    height: 100%;
+    width: 100%;
+`
+
 
 export class LandingPageWrapper extends Component {
     constructor(props) {
@@ -29,36 +37,42 @@ export class LandingPageWrapper extends Component {
 
     renderLeftContent = () => {
         const { leftContent } = this.props;
-        return leftContent.map((x, index) => {
-            // scrollTopPosition is where you want the node to start and scrollBottomPosition where you want it to end
-            // Infinity means is the last scrollable content
-            if (
-                (x.scrollTopPosition <= this.state.scrollPosition) &&
-                ((x.scrollBottomPosition >= this.state.scrollPosition) || (x.scrollBottomPosition === Infinity))
-            ) {
-                return (
-                    <div
-                        key={index}
-                        id={x.id}
-                        style={{
-                            height: '100%',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            display: 'flex',
-                            background: x.background
-                        }}>
-                        {x.node}
-                    </div>
-                )
-            }
-        })
+        return leftContent.map((x, index) => (
+            <StyledDiv
+                style={{ ...x.outerStyles }}
+            >
+                {
+                    // scrollTopPosition is where you want the node to start and scrollBottomPosition where you want it to end
+                    // Infinity means is the last scrollable content
+                    (
+                        (x.scrollTopPosition <= this.state.scrollPosition) &&
+                        ((x.scrollBottomPosition >= this.state.scrollPosition) || (x.scrollBottomPosition === Infinity))
+                    ) && (
+                        <div
+                            key={index}
+                            id={x.id}
+                            style={
+                                {
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    display: 'flex',
+                                    zIndex: '10',
+                                    ...x.innerStyles
+                                }}>
+                            {x.node}
+                        </div>
+                    )
+                }
+            </StyledDiv>
+
+        ))
     }
 
     render() {
-        const { rightContent } = this.props;
+        const { rightContent, leftStyles } = this.props;
         return (
             <div className='LandingPageWrapper' style={{ position: 'relative' }}>
-                <div className='LandingPageWrapper__left'>
+                <div className='LandingPageWrapper__left' style={{ ...leftStyles }}>
                     <div className='LandingPageWrapper__left-content'>
                         {
                             this.renderLeftContent()

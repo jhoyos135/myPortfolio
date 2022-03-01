@@ -1,23 +1,31 @@
 @import "../../globalStyles.scss";
 
-.FloatingNav__next {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 15px;
-  cursor: pointer;
-  font-size: 3em;
-  color: $white;
-  font-weight: bold;
-}
-
+.FloatingNav__next,
 .FloatingNav__prev {
   position: absolute;
   bottom: 0;
-  left: 0;
   margin: 15px;
   cursor: pointer;
-  font-size: 3em;
-  color: $white;
+  font-size: 2em;
   font-weight: bold;
+  color: $white;
+  padding: 10px;
+  background: $overlay;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  transition: 0.2s all ease-out 0s;
+  &:hover {
+    background: $white;
+    color: $black;
+  }
+}
+
+.FloatingNav__next {
+  right: 0;
+}
+
+.FloatingNav__prev {
+  left: 0;
 }

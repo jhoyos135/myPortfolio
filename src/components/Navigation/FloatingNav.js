@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { navigationData } from './navigationData'
+import { navigationData } from './navigationData';
+import { AiFillCaretRight } from 'react-icons/ai';
+import { AiFillCaretLeft } from 'react-icons/ai';
+
 import './style.scss';
 
 export class FloatingNav extends Component {
@@ -53,12 +56,12 @@ export class FloatingNav extends Component {
                 {
                     !this.state.isLast && (
                         <div className='FloatingNav__next' onClick={() => this.nextLogic()}>
-                            {'>'}
+                            <AiFillCaretRight />
                         </div>
                     )
                 }
                 <div className='FloatingNav__prev' onClick={() => this.prevLogic()}>
-                    {'<'}
+                    <AiFillCaretLeft />
                 </div>
             </>
         )

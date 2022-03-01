@@ -3,7 +3,6 @@ import LandingPageWrapper from '../Landing/LandingPage/LandingPageWrapper';
 import styled from 'styled-components';
 import colors from '../../globalStyles.scss'
 const StyledHeader = styled.h1`
-  color: ${colors.white};
   font-size: ${colors.heroFontSize};
   letter-spacing: ${colors.letterSpacing};
 `;
@@ -14,23 +13,22 @@ export class ProjectsLandingPage extends Component {
         return (
             <LandingPageWrapper
                 {...this.props}
+                leftStyles={{
+                    background: 'green'
+                }}
                 leftContent={[
                     {
                         background: 'green',
                         scrollTopPosition: 0,
-                        scrollBottomPosition: 499,
-                        id: 'green',
-                        node: (
-                            <StyledHeader>
-                                {'PROJECTS'}
-                            </StyledHeader>
-                        )
-                    },
-                    {
-                        background: 'red',
-                        scrollTopPosition: 500,
                         scrollBottomPosition: Infinity,
-                        id: 'red',
+                        id: 'green',
+                        outerStyles: {
+                            color: colors.white,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            gridColumn: '1/4'
+                        },
                         node: (
                             <StyledHeader>
                                 {'PROJECTS'}

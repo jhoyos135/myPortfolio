@@ -3,7 +3,6 @@ import LandingPageWrapper from '../Landing/LandingPage/LandingPageWrapper';
 import styled from 'styled-components';
 import colors from '../../globalStyles.scss'
 const StyledHeader = styled.h1`
-  color: ${colors.white};
   font-size: ${colors.heroFontSize};
   letter-spacing: ${colors.letterSpacing};
 `;
@@ -14,23 +13,21 @@ export class ContactLandingPage extends Component {
         return (
             <LandingPageWrapper
                 {...this.props}
+                leftStyles={{
+                    background: 'purple'
+                }}
                 leftContent={[
                     {
-                        background: 'purple',
                         scrollTopPosition: 0,
-                        scrollBottomPosition: 499,
-                        id: 'purple',
-                        node: (
-                            <StyledHeader>
-                                {'CONTACT'}
-                            </StyledHeader>
-                        )
-                    },
-                    {
-                        background: 'orange',
-                        scrollTopPosition: 500,
                         scrollBottomPosition: Infinity,
-                        id: 'orange',
+                        id: 'purple',
+                        outerStyles: {
+                            color: colors.white,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            gridColumn: '1/4'
+                        },
                         node: (
                             <StyledHeader>
                                 {'CONTACT'}

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import LandingPageWrapper from '../Landing/LandingPage/LandingPageWrapper';
 import styled from 'styled-components';
-import colors from '../../globalStyles.scss'
+import colors from '../../globalStyles.scss';
+import { FadeIn } from '../core/Animation';
+
 const StyledHeader = styled.h1`
-  color: ${colors.white};
   font-size: ${colors.heroFontSize};
   letter-spacing: ${colors.letterSpacing};
 `;
@@ -14,12 +15,21 @@ export class AboutLandingPage extends Component {
         return (
             <LandingPageWrapper
                 {...this.props}
+                leftStyles={{
+                    background: 'blue'
+                }}
                 leftContent={[
                     {
-                        background: 'blue',
                         scrollTopPosition: 0,
-                        scrollBottomPosition: 499,
+                        scrollBottomPosition: Infinity,
                         id: 'blue',
+                        outerStyles: {
+                            color: colors.white,
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            gridColumn: '1/4'
+                        },
                         node: (
                             <StyledHeader>
                                 {'ABOUT'}
@@ -27,14 +37,19 @@ export class AboutLandingPage extends Component {
                         )
                     },
                     {
-                        background: 'green',
-                        scrollTopPosition: 500,
+                        scrollTopPosition: 300,
                         scrollBottomPosition: Infinity,
-                        id: 'green',
+                        id: 'blue',
+                        outerStyles: {
+                            color: 'white'
+                        },
+                        innerStyles: {
+                            height: '100%'
+                        },
                         node: (
-                            <StyledHeader>
-                                {'ABOUT'}
-                            </StyledHeader>
+                            <FadeIn>
+                                {'test'}
+                            </FadeIn>
                         )
                     }
 
