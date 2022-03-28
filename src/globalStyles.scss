@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300&display=swap");
-/* colors */
-$primary: #00303d;
-$secondary: #a9d6e5;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Roboto:ital,wght@1,300&display=swap"); /* colors */
+$primary: #e3b505;
+$secondary: #2d60b4;
+$third: #b5171d;
+$white: #f5f5f5;
+$black: #272727;
 $header: #00607a;
-$third: #40434e;
-$white: #fffffa;
-$black: #252422;
 $black-50: rgba(0, 0, 0, 0.4);
 $overlay: #25242285;
 $red: #f03d43;
@@ -16,6 +16,7 @@ $gray-300: #a8a8a8;
 $gray-disable: #e5e5e570;
 $openSans: "Open Sans", sans-serif;
 $alegreya: "Alegreya", serif;
+$roboto: "Roboto Mono", monospace;
 $herofontSize: 4em;
 $letterSpacing: 3px;
 :export {
@@ -27,6 +28,7 @@ $letterSpacing: 3px;
   black_50: $black-50;
   openSans: $openSans;
   alegreya: $alegreya;
+  roboto: $roboto;
   header: $header;
   red: $red;
   blue: $blue;

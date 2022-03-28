@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { data } from "./data";
+import BottomNavigation from '../../Navigation/BottomNavigation';
 import './style.scss';
 
 
@@ -11,7 +12,8 @@ export class LandingPageContainer extends Component {
         isSelected: null,
         color: "",
         transitionClass: false,
-        loading: true
+        loading: true,
+        item: ''
     };
 
     routeAfterTimerEnds = (item) => {
@@ -43,16 +45,16 @@ export class LandingPageContainer extends Component {
         }
     };
 
-    handleSelection = (e, item) => {
+    handleSelection = (e, item, id) => {
         this.setState(() => {
             return { transitionClass: true, isSelected: item.id }
-        }, this.routeAfterTimerEnds(item)
+        }, this.routeAfterTimerEnds(id)
         )
     }
 
     navigateTo = (item) => {
         const { history } = this.props;
-        history.push(`/${item.route}`)
+        history.push(`/home/?section=${item}`)
     }
 
     renderCategories = () => {
@@ -62,7 +64,7 @@ export class LandingPageContainer extends Component {
             return (
                 <div
                     key={item.id}
-                    onClick={(e) => this.handleSelection(e, item)}
+                    onClick={(e) => this.handleSelection(e, item, item.section)}
                     onMouseOver={(e) => this.handleMouseOver(e, item)}
                     onMouseLeave={(e) => this.handleMouseOut(e, item)}
                     className={classnames(item.id, {
@@ -90,6 +92,7 @@ export class LandingPageContainer extends Component {
 
     render() {
         const { isActive, color, isSelected } = this.state;
+        const { route } = this.props;
         return (
             <>
                 <div className="CategoryLandingContainer__hero">
@@ -114,6 +117,7 @@ export class LandingPageContainer extends Component {
                         </div>
                     </div>
                 </div>
+                <BottomNavigation route={route} />
             </>
         )
     }

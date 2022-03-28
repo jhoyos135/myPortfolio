@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LandingPageWrapper from '../Landing/LandingPage/LandingPageWrapper';
+import LandingPageWrapper from '../Landing/LandingPage/HomePageWrapper';
 import styled from 'styled-components';
 import colors from '../../globalStyles.scss'
 const StyledHeader = styled.h1`

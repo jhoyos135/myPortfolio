@@ -9,7 +9,9 @@
     "@testing-library/user-event": "^13.5.0",
     "classnames": "^2.3.1",
     "history": "^5.3.0",
+    "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
+    "query-string": "^7.1.1",
     "react": "^16.12.0",
     "react-animations": "^1.0.0",
     "react-dom": "^16.12.0",
@@ -26,7 +28,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "aws s3 sync build/ s3://codewithjulianportfolio"
+    "deploy1": "aws s3 sync build/ s3://codexwithjulian.com",
+    "deploy2": "aws s3 sync build/ s3://www.codexwithjulian.com",
+    "deploy": "npm run deploy1 & npm run deploy2"
   },
   "eslintConfig": {
     "extends": [

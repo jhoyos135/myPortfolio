@@ -20,7 +20,6 @@
       background-color: $white;
       cursor: pointer;
       overflow: hidden;
-      // background-image: none;
       height: auto;
     }
     .item.active.isSelected {
@@ -183,8 +182,8 @@
         transition-delay: 0s;
         opacity: 1;
         transform: scale(1);
-        transition: visibility 1s, opacity 1s, background 0.5s ease,
-          transform 4.5s ease, -webkit-transform 4.5s ease;
+        // transition: visibility 1s, opacity 1s, background 0.5s ease,
+        //   transform 4.5s ease, -webkit-transform 4.5s ease;
       }
     }
   }
@@ -196,30 +195,28 @@
   }
 }
 
-.LandingPageWrapper {
+.HomePageWrapper {
   display: flex;
   height: 100%;
   width: 100%;
   justify-content: center;
-  .LandingPageWrapper__left,
-  .LandingPageWrapper__right {
+  .HomePageWrapper__left,
+  .HomePageWrapper__right {
     flex: 1 1;
-    // height: 100%;
-    // overflow: hidden;
   }
-  .LandingPageWrapper__left {
+  .HomePageWrapper__left {
     position: relative;
     box-shadow: -3px -3px 22px rgba(51, 51, 51, 1.109%);
     max-width: 50%;
-    .LandingPageWrapper__left-content {
+    .HomePageWrapper__left-content {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 150px 1fr 1fr 1fr;
       height: 100%;
     }
   }
-  .LandingPageWrapper__right {
-    .LandingPageWrapper__right-content {
+  .HomePageWrapper__right {
+    .HomePageWrapper__right-content {
       height: 100%;
       padding: 15px;
     }

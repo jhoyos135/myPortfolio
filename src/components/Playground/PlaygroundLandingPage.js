@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
-import LandingPageWrapper from '../Landing/LandingPage/LandingPageWrapper';
+import LandingPageWrapper from '../Landing/LandingPage/HomePageWrapper';
 import styled from 'styled-components';
-import colors from '../../globalStyles.scss';
-import { FadeIn } from '../core/Animation';
-
+import colors from '../../globalStyles.scss'
 const StyledHeader = styled.h1`
   font-size: ${colors.heroFontSize};
   letter-spacing: ${colors.letterSpacing};
 `;
 
 
-export class AboutLandingPage extends Component {
+export class PlaygroundLandingPage extends Component {
     render() {
         return (
             <LandingPageWrapper
                 {...this.props}
                 leftStyles={{
-                    background: 'blue'
+                    background: 'pink'
                 }}
                 leftContent={[
                     {
                         scrollTopPosition: 0,
                         scrollBottomPosition: Infinity,
-                        id: 'blue',
+                        id: 'pink',
                         outerStyles: {
                             color: colors.white,
                             display: 'flex',
@@ -32,24 +30,8 @@ export class AboutLandingPage extends Component {
                         },
                         node: (
                             <StyledHeader>
-                                {'ABOUT'}
+                                {'PLAYGROUND'}
                             </StyledHeader>
-                        )
-                    },
-                    {
-                        scrollTopPosition: 300,
-                        scrollBottomPosition: Infinity,
-                        id: 'blue',
-                        outerStyles: {
-                            color: 'white'
-                        },
-                        innerStyles: {
-                            height: '100%'
-                        },
-                        node: (
-                            <FadeIn>
-                                {'test'}
-                            </FadeIn>
                         )
                     }
 
@@ -85,4 +67,4 @@ export class AboutLandingPage extends Component {
     }
 }
 
-export default AboutLandingPage
+export default PlaygroundLandingPage

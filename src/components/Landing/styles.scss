@@ -4,24 +4,80 @@
   position: relative;
   height: 100%;
   background-color: $white;
-  // padding: 30px;
 }
 .LandingContainer__wrapper {
+  position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  .TopNavigation {
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2/4;
+    .topNavigation__logo {
+      color: $white;
+      font-family: $roboto;
+    }
+    .TopNavigation__text a {
+      font-size: 1em;
+      color: $white;
+      font-family: $roboto !important;
+      letter-spacing: 2px;
+    }
+    .menu {
+      cursor: pointer;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      .item {
+        position: relative;
+        flex: 1 1 30%;
+        height: auto;
+        align-self: stretch;
+        justify-self: center;
+        overflow: hidden;
+        display: flex;
+        border: 0.5px solid $white;
+        background-color: $secondary;
+      }
+      .item.active {
+        background-color: $third;
+      }
+    }
+  }
+  .BottomNavigation {
+    width: 95%;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 5%;
+    .BottomNavigation__text a {
+      font-size: 1em;
+      color: $white;
+      font-family: $roboto !important;
+      letter-spacing: 2px;
+    }
+  }
   .LandingContainer__wrapper-body {
-    position: relative;
-    height: 96%;
-    width: 98%;
+    height: 90%;
+    width: 95%;
     background-color: $white;
     .link-edit {
       cursor: pointer;
       display: flex;
       background-color: $white;
-      color: $black;
+      color: $primary;
       padding: 10px;
-      //   position: absolute;
       bottom: 0;
       left: 0;
       margin: 15px;
@@ -36,11 +92,9 @@
       cursor: pointer;
       display: flex;
       padding: 10px;
-      // position: absolute;
       bottom: 0;
       right: 0;
       margin: 15px;
-      // border-radius: 100%;
       z-index: 4;
       &:hover {
         background-color: $third;
@@ -51,9 +105,8 @@
       cursor: pointer;
       display: flex;
       background-color: $white;
-      color: $black;
+      color: $primary;
       padding: 10px;
-      // position: absolute;
       bottom: 0;
       right: 0;
       margin: 15px;
@@ -79,7 +132,7 @@
     }
   }
   height: 100%;
-  background-color: $third;
+  background-color: $black;
   -webkit-box-shadow: 10px -3px 15px 4px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 10px -3px 15px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 10px -3px 15px 4px rgba(0, 0, 0, 0.1);

@@ -1,7 +1,7 @@
 export const data = [
-    { id: 1, route: 'about', color: 'blue', frontText: 'ABOUT', backText: 'Come in, and find out who I am' },
-    { id: 2, route: 'projects', color: 'green', frontText: 'PROJECTS', backText: 'Take a look at some of my work' },
-    { id: 3, route: 'experience', color: 'red', frontText: 'EXPERIENCE', backText: 'This is what I have done' },
-    { id: 4, route: 'skills', color: 'pink', frontText: 'SKILLS', backText: 'This is what I can do' },
-    { id: 5, route: 'contact', color: 'purple', frontText: 'CONTACT', backText: 'Can\'t wait to hear from you' }
+    { id: 1, section: 'about', route: 'home', color: 'blue', frontText: 'ABOUT', backText: 'Come in, and find out who I am' },
+    { id: 2, section: 'projects', route: 'home', color: 'green', frontText: 'PROJECTS', backText: 'Take a look at some of my selected projects' },
+    { id: 3, section: 'experience', route: 'home', color: 'red', frontText: 'EXPERIENCE', backText: 'Where I\'ve been, where I am and where I want to go.' },
+    { id: 4, section: 'playground', route: 'home', color: 'pink', frontText: 'PLAYGROUND', backText: 'A collection of front-end coding. These are a mix of freelance, practice and side projects.' },
+    { id: 5, section: 'contact', route: 'home', color: 'purple', frontText: 'CONTACT', backText: 'Can\'t wait to hear from you' }
 ];

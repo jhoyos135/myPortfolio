@@ -1,15 +1,23 @@
 import React, { Component } from 'react'
 import LandingContainer from '../components/Landing/LandingContainer'
-import AboutLandingPage from '../components/About/AboutLandingPage';
+import HomeLandingPage from '../components/Home/HomeLandingPage';
 import ProjectsLandingPage from '../components/Projects/ProjectsLandingPage';
 import LandingPageContainer from '../components/Landing/LandingPage/LandingPageContainer'
 import ExperienceLandingPage from '../components/Experience/ExperienceLandingPage';
-import SkillsLandingPage from '../components/Skills/SkillsLandingPage';
+import PlaygroundLandingPage from '../components/Playground/PlaygroundLandingPage';
 import ContactLandingPage from '../components/Contact/ContactLandingPage';
 import { BrowserRouter, Route } from "react-router-dom";
 
 
 export class Router extends Component {
+    state = {
+        section: 'about'
+    }
+    handleSection = (section) => {
+        this.setState({
+            section
+        })
+    }
     render() {
         return (
             <>
@@ -19,44 +27,44 @@ export class Router extends Component {
                             exact
                             path='/'
                             render={(routeProps) => (
-                                <LandingPageContainer {...this.props} {...routeProps} />
+                                <LandingPageContainer route={'landing'} {...this.props} {...routeProps} />
                             )}
                         />
                         <Route
                             exact
-                            path='/about'
+                            path='/home*'
                             render={(routeProps) => (
-                                <AboutLandingPage {...this.props} {...routeProps} />
+                                <HomeLandingPage  {...this.props} {...routeProps} />
                             )}
                         />
-                        <Route
+                        {/* <Route
                             exact
                             path='/projects'
                             render={(routeProps) => (
-                                <ProjectsLandingPage {...this.props} {...routeProps} />
+                                <ProjectsLandingPage  {...this.props} {...routeProps} />
                             )}
                         />
                         <Route
                             exact
                             path='/experience'
                             render={(routeProps) => (
-                                <ExperienceLandingPage {...this.props} {...routeProps} />
+                                <ExperienceLandingPage  {...this.props} {...routeProps} />
                             )}
                         />
                         <Route
                             exact
-                            path='/skills'
+                            path='/playground'
                             render={(routeProps) => (
-                                <SkillsLandingPage {...this.props} {...routeProps} />
+                                <PlaygroundLandingPage  {...this.props} {...routeProps} />
                             )}
                         />
                         <Route
                             exact
                             path='/contact'
                             render={(routeProps) => (
-                                <ContactLandingPage {...this.props} {...routeProps} />
+                                <ContactLandingPage route={'contact'} {...this.props} {...routeProps} />
                             )}
-                        />
+                        /> */}
                     </LandingContainer>
                 </BrowserRouter>
             </>
