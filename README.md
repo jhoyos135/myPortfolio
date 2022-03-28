@@ -1,3 +1,3 @@
 # Deployment
 
-[Website](codexwithjulian.com).
+[Website](http://www.codexwithjulian.com).
