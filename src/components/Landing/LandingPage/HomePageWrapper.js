@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import FloatingNav from '../../Navigation/FloatingNav';
-import TopNavigation from '../../Navigation/TopNavigation';
+import Navigation from '../../Navigation/Navigation';
 import BottomNavigation from '../../Navigation/BottomNavigation';
+import TopNavigation from '../../Navigation/TopNavigation';
 import Timeline from './Timeline';
 import queryString from "query-string";
-
+import colors from '../../../globalStyles.scss'
 
 import styled from 'styled-components'
 import './style.scss'
@@ -72,23 +73,13 @@ export class HomePageWrapper extends Component {
             if (x.id === currentVisiblePage) {
 
                 return (
-                    <StyledDiv
-                        key={index}
-                        style={{ ...x.outerStyles }}
-                    >
+                    <>
 
                         {
                             x.id === currentVisiblePage && (
-                                <div
-                                    style={
-                                        {
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            display: 'flex',
-                                            zIndex: '10'
-                                        }}>
+                                <>
                                     {x.node}
-                                </div>
+                                </>
                             )
                         }
 
@@ -104,25 +95,14 @@ export class HomePageWrapper extends Component {
                                             ((hide >= this.state.scrollPosition[currentVisiblePage])))
                                     )
                                 ) && (
-                                    <div
-                                        // key={index}
-                                        // id={id}
-                                        style={
-                                            {
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                // display: 'flex',
-                                                zIndex: '10',
-                                                ...innerStyles
-                                            }}
-                                    >
+                                    <>
                                         {node}
-                                    </div>
+                                    </>
                                 )
                             )
                             )
                         }
-                    </StyledDiv>
+                    </>
                 )
             }
 
@@ -132,14 +112,15 @@ export class HomePageWrapper extends Component {
     }
 
     render() {
-        const { rightContent, leftStyles, route, history } = this.props;
+        const { route, history } = this.props;
         const { currentVisiblePage } = this.state;
         return (
             <>
+                <TopNavigation route={route} history={history} />
                 <div className='HomePageWrapper' style={{ position: 'relative' }}>
-                    <div className='HomePageWrapper__left' style={{ ...leftStyles }}>
+                    <div className='HomePageWrapper__left'>
                         <div className='HomePageWrapper__left-content'>
-                            <TopNavigation
+                            <Navigation
                                 currentVisiblePage={currentVisiblePage}
                                 route={route}
                                 history={history}
@@ -148,7 +129,6 @@ export class HomePageWrapper extends Component {
                                 this.renderLeftContent()
                             }
                         </div>
-                        {/* <FloatingNav {...this.props} /> */}
                     </div>
                     <Timeline
                         onScroll={this.onScroll}

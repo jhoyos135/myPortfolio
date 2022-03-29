@@ -76,35 +76,35 @@ function Timeline(props) {
     useEffect(() => {
         if (visible['timeline-item-0'] === true) {
             props.setVisible('about')
-            props.history.push(`/home?section=about`)
+            props.history.replace(`/home?section=about`)
         }
         if (
             (visible['timeline-item-0'] === true && visible['timeline-item-1'] === true) ||
             (visible['timeline-item-1'] === true)
         ) {
             props.setVisible('projects')
-            props.history.push(`/home?section=projects`)
+            props.history.replace(`/home?section=projects`)
         }
         if (
             (visible['timeline-item-1'] === true && visible['timeline-item-2'] === true) ||
             (visible['timeline-item-2'] === true)
         ) {
             props.setVisible('experience')
-            props.history.push(`/home?section=experience`)
+            props.history.replace(`/home?section=experience`)
         }
         if (
             (visible['timeline-item-2'] === true && visible['timeline-item-3'] === true) ||
             (visible['timeline-item-3'] === true)
         ) {
             props.setVisible('playground')
-            props.history.push(`/home?section=playground`)
+            props.history.replace(`/home?section=playground`)
         }
         if (
             (visible['timeline-item-3'] === true && visible['timeline-item-4'] === true) ||
             (visible['timeline-item-4'] === true)
         ) {
             props.setVisible('contact')
-            props.history.push(`/home?section=contact`)
+            props.history.replace(`/home?section=contact`)
         }
 
     }, [visible])
