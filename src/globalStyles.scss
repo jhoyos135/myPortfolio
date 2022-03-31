@@ -107,7 +107,7 @@ hr {
 
   /* the "track" of the scroll you can change to */
   &::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 0.6rem gray;
+    box-shadow: inset 0 0 0.6rem $primary;
   }
 
   /* the buttons, top and bottom, of the scroll bar... single vs doublesided buttons */
@@ -133,13 +133,13 @@ hr {
 
   /* Scroll handle (the part you drag) */
   &::-webkit-scrollbar-thumb {
-    background: gray;
+    background: $third;
     border-radius: 5px;
   }
 
   /* Scroll handle on hover */
   &::-webkit-scrollbar-thumb:hover {
-    background: gray;
+    background: $third;
   }
 }
 .custom-scroller {
@@ -262,4 +262,41 @@ hr {
 .reactPage-MuiSwitch-colorPrimary-315.reactPage-MuiSwitch-checked-318
   + .reactPage-MuiSwitch-track-322 {
   background-color: $third !important;
+}
+
+.custom_pop {
+  .popover-header {
+    font-size: 0.9em;
+    padding: 15px;
+    margin-left: 15px;
+    background: $primary;
+    font-family: $roboto;
+    letter-spacing: 5px;
+    color: $third;
+    border-radius: 5px;
+    /* Border */
+    border: 1px solid $primary;
+
+    /* Used to position the arrow */
+    position: relative;
+    .container__arrow--lc {
+      /* Position at the left center */
+      left: 0;
+      top: 50%;
+
+      /* Border */
+      border-bottom: 1px solid $primary;
+      border-left: 1px solid $primary;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .container__arrow {
+      /* Size */
+      height: 16px;
+      width: 16px;
+      z-index: -1;
+
+      background-color: $primary;
+      position: absolute;
+    }
+  }
 }

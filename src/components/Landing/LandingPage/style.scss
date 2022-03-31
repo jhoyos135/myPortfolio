@@ -206,12 +206,12 @@
   }
   .HomePageWrapper__left {
     position: relative;
-    box-shadow: -3px -3px 22px rgba(51, 51, 51, 1.109%);
+    box-shadow: -8px -3px 22px rgba(51, 51, 51, 0.514);
     max-width: 50%;
     .HomePageWrapper__left-content {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 150px 1fr 1fr 1fr;
+      grid-template-columns: 100px repeat(4, 1fr);
+      grid-template-rows: repeat(5, 1fr);
       height: 100%;
     }
   }

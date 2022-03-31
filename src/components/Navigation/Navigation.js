@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.scss';
 import colors from '../../globalStyles.scss'
-import classnames from 'classnames'
+import classnames from 'classnames';
+import NavigationPopOver from './NavigationPopOver';
+
 
 const Navigation = ({ route, history, currentVisiblePage }) => {
+    const [hover, setHover] = useState('');
+    const [currentPage, setCurrentPage] = useState(currentVisiblePage);
     const scrollTo = (id) => {
         const section = document.querySelector(`#${id}`);
         if (section) {
@@ -13,6 +17,18 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
             }, 10);
         }
     }
+    const onMouseEnter = (value) => {
+        setHover(value)
+        setCurrentPage(value)
+    };
+    const onMouseLeave = () => {
+        setHover('')
+        setCurrentPage(currentVisiblePage)
+    };
+    useEffect(() => {
+        setCurrentPage(currentVisiblePage)
+    }, [currentVisiblePage])
+
     const itemStyles = {
         display: 'flex',
         justifyContent: 'center',
@@ -24,62 +40,74 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
         <div className='Navigation'>
             {
                 route !== 'home' && (
-                    <span
+                    <div
                         style={{
-                            display: 'flex',
                             color: colors.white,
-                            width: '100%',
                             height: '100%'
-
                         }}>
                         <div className='menu'>
-                            <span
+                            <div
+                                id={'aboutItem'}
                                 style={itemStyles}
                                 onClick={() => scrollTo('about')}
+                                onMouseEnter={() => onMouseEnter('about')}
+                                onMouseLeave={() => onMouseLeave()}
                                 className={classnames({
-                                    'active': currentVisiblePage === 'about',
-                                    'item': true
-                                })}>
-                                {'ABOUT'}
-                            </span>
-                            <span
+                                    'active': currentPage === 'about',
+                                    'item': true,
+                                    'hover': hover === 'about'
+                                })} />
+                            <NavigationPopOver text='ABOUT' hover={hover} target={'aboutItem'} />
+                            <div
+                                id={'projectsItem'}
                                 style={itemStyles}
+                                onMouseEnter={() => onMouseEnter('projects')}
+                                onMouseLeave={() => onMouseLeave()}
                                 onClick={() => scrollTo('projects')}
                                 className={classnames({
-                                    'active': currentVisiblePage === 'projects',
-                                    'item': true
-                                })}>
-                                {'PROJECTS'}
-                            </span>
-                            <span
+                                    'active': currentPage === 'projects',
+                                    'item': true,
+                                    'hover': hover === 'projects'
+                                })} />
+                            <NavigationPopOver text='PROJECTS' hover={hover} target={'projectsItem'} />
+                            <div
+                                id={'experienceItem'}
                                 style={itemStyles}
+                                onMouseEnter={() => onMouseEnter('experience')}
+                                onMouseLeave={() => onMouseLeave()}
                                 onClick={() => scrollTo('experience')}
                                 className={classnames({
-                                    'active': currentVisiblePage === 'experience',
-                                    'item': true
-                                })}>
-                                {'EXPERIENCE'}
-                            </span>
-                            <span
+                                    'active': currentPage === 'experience',
+                                    'item': true,
+                                    'hover': hover === 'experience'
+                                })} />
+                            <NavigationPopOver text='EXPERIENCE' hover={hover} target={'experienceItem'} />
+                            <div
+                                id={'playgroundItem'}
                                 style={itemStyles}
+                                onMouseEnter={() => onMouseEnter('playground')}
+                                onMouseLeave={() => onMouseLeave()}
                                 onClick={() => scrollTo('playground')}
                                 className={classnames({
-                                    'active': currentVisiblePage === 'playground',
-                                    'item': true
-                                })}>
-                                {'PLAYGROUND'}
-                            </span>
-                            <span
+                                    'active': currentPage === 'playground',
+                                    'item': true,
+                                    'hover': hover === 'playground'
+                                })} />
+                            <NavigationPopOver text='PLAYGROUND' hover={hover} target={'playgroundItem'} />
+                            <div
+                                id={'contactItem'}
                                 style={itemStyles}
+                                onMouseEnter={() => onMouseEnter('contact')}
+                                onMouseLeave={() => onMouseLeave()}
                                 onClick={() => scrollTo('contact')}
                                 className={classnames({
-                                    'active': currentVisiblePage === 'contact',
-                                    'item': true
-                                })}>
-                                {'CONTACT'}
-                            </span>
+                                    'active': currentPage === 'contact',
+                                    'item': true,
+                                    'hover': hover === 'contact'
+                                })} />
+                            <NavigationPopOver text='CONTACT' hover={hover} target={'contactItem'} />
                         </div>
-                    </span>
+                    </div>
                 )
             }
         </div>
