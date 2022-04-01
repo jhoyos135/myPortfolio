@@ -3,6 +3,7 @@ import './style.scss';
 import colors from '../../globalStyles.scss'
 import classnames from 'classnames';
 import NavigationPopOver from './NavigationPopOver';
+import Icon from './Icon';
 
 
 const Navigation = ({ route, history, currentVisiblePage }) => {
@@ -56,7 +57,16 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
                                     'active': currentPage === 'about',
                                     'item': true,
                                     'hover': hover === 'about'
-                                })} />
+                                })}>
+                                <Icon
+                                    classNames='fa-solid fa-user'
+                                    fontSize={'2em'}
+                                    active={currentPage === 'about'}
+                                    styles={{
+                                        fontSize: '2em'
+                                    }}
+                                />
+                            </div>
                             <NavigationPopOver text='ABOUT' hover={hover} target={'aboutItem'} />
                             <div
                                 id={'projectsItem'}
@@ -68,7 +78,16 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
                                     'active': currentPage === 'projects',
                                     'item': true,
                                     'hover': hover === 'projects'
-                                })} />
+                                })}>
+                                <Icon
+                                    fontSize={'2em'}
+                                    active={currentPage === 'projects'}
+                                    classNames='fa-solid fa-laptop-code'
+                                    styles={{
+                                        fontSize: '2em'
+                                    }}
+                                />
+                            </div>
                             <NavigationPopOver text='PROJECTS' hover={hover} target={'projectsItem'} />
                             <div
                                 id={'experienceItem'}
@@ -80,7 +99,16 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
                                     'active': currentPage === 'experience',
                                     'item': true,
                                     'hover': hover === 'experience'
-                                })} />
+                                })}>
+                                <Icon
+                                    fontSize={'2em'}
+                                    active={currentPage === 'experience'}
+                                    classNames='fa-solid fa-briefcase'
+                                    styles={{
+                                        fontSize: '2em'
+                                    }}
+                                />
+                            </div>
                             <NavigationPopOver text='EXPERIENCE' hover={hover} target={'experienceItem'} />
                             <div
                                 id={'playgroundItem'}
@@ -92,7 +120,16 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
                                     'active': currentPage === 'playground',
                                     'item': true,
                                     'hover': hover === 'playground'
-                                })} />
+                                })}>
+                                <Icon
+                                    fontSize={'2em'}
+                                    active={currentPage === 'playground'}
+                                    classNames='fa-solid fa-dice-d6'
+                                    styles={{
+                                        fontSize: '2em'
+                                    }}
+                                />
+                            </div>
                             <NavigationPopOver text='PLAYGROUND' hover={hover} target={'playgroundItem'} />
                             <div
                                 id={'contactItem'}
@@ -104,7 +141,16 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
                                     'active': currentPage === 'contact',
                                     'item': true,
                                     'hover': hover === 'contact'
-                                })} />
+                                })}>
+                                <Icon
+                                    fontSize={'2em'}
+                                    active={currentPage === 'contact'}
+                                    classNames='fa-solid fa-message'
+                                    styles={{
+                                        fontSize: '2em'
+                                    }}
+                                />
+                            </div>
                             <NavigationPopOver text='CONTACT' hover={hover} target={'contactItem'} />
                         </div>
                     </div>
