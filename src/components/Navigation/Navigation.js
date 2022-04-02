@@ -12,10 +12,10 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
     const scrollTo = (id) => {
         const section = document.querySelector(`#${id}`);
         if (section) {
+            history.replace(`/home?section=${id}`)
+            section.scrollIntoView();
             setTimeout(() => {
-                history.replace(`/home?section=${id}`)
-                section.scrollIntoView();
-            }, 10);
+            }, 0);
         }
     }
     const onMouseEnter = (value) => {

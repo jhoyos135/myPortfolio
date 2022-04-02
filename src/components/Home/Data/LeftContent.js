@@ -1,5 +1,5 @@
 import colors from '../../../globalStyles.scss';
-import { FadeIn } from '../../core/Animation';
+import { Animation } from '../../core/Animation';
 
 
 export const leftContent = [
@@ -13,9 +13,11 @@ export const leftContent = [
             gridColumn: '2/4'
         },
         node: (
-            <FadeIn>
+            <Animation
+                type={'fadeInLeft'}
+            >
                 {'About'}
-            </FadeIn>
+            </Animation>
         ),
     },
     {
@@ -28,27 +30,27 @@ export const leftContent = [
             gridColumn: '2/4'
         },
         node: (
-            <FadeIn>
+            <Animation>
                 {'Projects'}
-            </FadeIn>
+            </Animation>
         ),
         subNodes: [
             {
                 show: 100,
                 hide: 10,
                 node: (
-                    <FadeIn>
+                    <Animation>
                         {'test'}
-                    </FadeIn>
+                    </Animation>
                 )
             },
             {
                 show: 0,
                 hide: -400,
                 node: (
-                    <FadeIn>
+                    <Animation>
                         {'test 2'}
-                    </FadeIn>
+                    </Animation>
                 )
             },
 
@@ -64,9 +66,9 @@ export const leftContent = [
             gridColumn: '2/4'
         },
         node: (
-            <FadeIn>
+            <Animation>
                 {'Experience'}
-            </FadeIn>
+            </Animation>
         ),
     },
     {
@@ -79,9 +81,9 @@ export const leftContent = [
             gridColumn: '2/4'
         },
         node: (
-            <FadeIn>
+            <Animation>
                 {'Playground'}
-            </FadeIn>
+            </Animation>
         ),
     },
     {
@@ -94,9 +96,9 @@ export const leftContent = [
             gridColumn: '2/4'
         },
         node: (
-            <FadeIn>
+            <Animation>
                 {'Contact'}
-            </FadeIn>
+            </Animation>
         ),
     },
 

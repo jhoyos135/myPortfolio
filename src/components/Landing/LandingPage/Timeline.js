@@ -16,7 +16,7 @@ const TimelineItem = ({ id, node, route, observe, unobserve }) => {
     return (
         <div
             style={{
-                height: '1500px'
+                minHeight: '1500px'
             }}
             ref={ref}
             className={`timeline-item-${id}`}
@@ -115,7 +115,8 @@ function Timeline(props) {
             <div className="timeline-container HomePageWrapper__right">
                 <div
                     style={{
-                        height: '100%'
+                        height: '100%',
+                        padding: '15px'
                     }}
                     className="timeline-items-container custom-scroller"
                     ref={props.ref}

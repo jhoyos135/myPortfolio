@@ -1,1 +1,1 @@
-export { FadeIn } from '../Animation/FadeIn'
+export { Animation } from './Animation'

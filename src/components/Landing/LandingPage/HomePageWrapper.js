@@ -48,7 +48,7 @@ export class HomePageWrapper extends Component {
         if (section) {
             setTimeout(() => {
                 section.scrollIntoView();
-            }, 10);
+            }, 0);
         }
     }
 
