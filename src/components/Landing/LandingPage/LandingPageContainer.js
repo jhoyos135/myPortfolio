@@ -11,6 +11,7 @@ export class LandingPageContainer extends Component {
         isActive: null,
         isSelected: null,
         color: "",
+        background: '',
         transitionClass: false,
         loading: true,
         item: ''
@@ -33,6 +34,7 @@ export class LandingPageContainer extends Component {
             this.setState(() => ({
                 isActive: item.id,
                 color: item.color,
+                background: item.background
             }));
         }
     };
@@ -41,6 +43,7 @@ export class LandingPageContainer extends Component {
             this.setState(() => ({
                 isActive: "",
                 color: "",
+                background: ''
             }));
         }
     };
@@ -80,7 +83,10 @@ export class LandingPageContainer extends Component {
                     </p>
                     <div
                         className='img'
-                        style={{ backgroundColor: item.color }}
+                        // small blocks
+                        style={{
+                            backgroundImage: `url("${item.background}")`
+                        }}
                     />
                     {/* Front of the square */}
                     <h1 className="front-title">{item.frontText}</h1>
@@ -91,7 +97,7 @@ export class LandingPageContainer extends Component {
     };
 
     render() {
-        const { isActive, color, isSelected } = this.state;
+        const { isActive, background, isSelected } = this.state;
         const { route } = this.props;
         return (
             <>
@@ -110,9 +116,12 @@ export class LandingPageContainer extends Component {
                                 active: isActive,
                             })}
                         >
+                            {/* large blocks */}
                             <div
                                 className='img'
-                                style={{ backgroundColor: color }}
+                                style={{
+                                    backgroundImage: `url("${background}")`
+                                }}
                             />
                         </div>
                     </div>

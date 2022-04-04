@@ -10,10 +10,10 @@ const EmbedCode = () => {
                 marginBottom: '30px',
                 fontWeight: 'bold',
                 fontFamily: colors.alegreya,
-                letterSpacing: '1px',
+                letterSpacing: colors.letterSpacing,
                 color: colors.secondary
             }}>
-                {'Draggable Table'}
+                {'Draggable Table Columns'}
             </div>
             <iframe src="https://codesandbox.io/embed/draggable-table-brzgz?fontsize=14"
                 style={{

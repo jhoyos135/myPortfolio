@@ -35,7 +35,7 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
         justifyContent: 'center',
         alignItems: 'center',
         fontFamily: colors.roboto,
-        letterSpacing: '2px'
+        letterSpacing: colors.letterSpacing
     }
     return (
         <div className='Navigation'>

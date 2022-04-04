@@ -1,5 +1,6 @@
 import React from 'react';
 import { Animation } from '../core/Animation';
+import colors from '../../globalStyles.scss'
 
 const Layout = ({
     header,
@@ -10,7 +11,7 @@ const Layout = ({
             <h1 style={{
                 textAlign: 'center',
                 padding: '15px',
-                letterSpacing: '4px'
+                letterSpacing: colors.letterSpacing
             }}>
                 {header}
             </h1>

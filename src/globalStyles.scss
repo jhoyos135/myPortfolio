@@ -6,8 +6,13 @@ $third: #b5171d;
 $white: #f5f5f5;
 $black: #272727;
 $header: #00607a;
-$black-50: rgba(0, 0, 0, 0.4);
-$overlay: #25242285;
+$black-50: rgba(0, 0, 0, 0.5);
+$overlay: linear-gradient(
+  150deg,
+  rgba(227, 181, 5, 0.6) 0%,
+  rgba(45, 96, 180, 0.55) 50%,
+  rgba(181, 23, 29, 0.4) 100%
+);
 $red: #f03d43;
 $blue: #0d91fd;
 $gray-100: #f1f7fd;

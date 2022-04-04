@@ -13,7 +13,7 @@ const CodePenDisplay = ({ header, hash, tab, user, height }) => {
                 marginBottom: '30px',
                 fontWeight: 'bold',
                 fontFamily: colors.alegreya,
-                letterSpacing: '1px',
+                letterSpacing: colors.letterSpacing,
                 color: colors.secondary
             }}>
                 {header}

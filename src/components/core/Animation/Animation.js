@@ -3,8 +3,11 @@ import styled, { keyframes } from 'styled-components';
 import * as animation from 'react-animations';
 
 const DivTag = styled.div`
-height: '100%';
+position: relative;
+height: 100%;
+width: 100%;
 animation: fadeInFromNone 0.3s ease-out 0s;
+overflow: hidden;
 @keyframes fadeInFromNone {
     0% {
         display: none;
@@ -25,14 +28,20 @@ animation: fadeInFromNone 0.3s ease-out 0s;
 `
 
 
-export const Animation = ({ children, duration, delay, type }) => {
+export const Animation = ({ children, duration, delay, type, style }) => {
     const AnimationKeyFrame = keyframes`${animation[type]}`;
     const AnimationDiv = styled.div`
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                width: 100%;
                 animation: ${duration} ${AnimationKeyFrame} ${delay};
                 animation-fill-mode: forwards;
                 `;
     return (
-        <DivTag>
+        <DivTag style={style}>
             <AnimationDiv>
                 {children}
             </AnimationDiv>
