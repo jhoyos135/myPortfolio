@@ -208,12 +208,10 @@
   }
   .HomePageWrapper__left {
     position: relative;
-    box-shadow: -8px -3px 22px rgba(51, 51, 51, 0.514);
+    box-shadow: -8px -3px 12px rgba(51, 51, 51, 0.514);
     max-width: 50%;
     .HomePageWrapper__left-content {
-      display: grid;
-      grid-template-columns: 100px repeat(4, 1fr);
-      grid-template-rows: repeat(5, 1fr);
+      display: flex;
       height: 100%;
     }
   }
@@ -222,6 +220,12 @@
       height: 100%;
       padding: 15px;
     }
+  }
+  #tsparticles {
+    position: absolute;
+    height: 100%;
+    opacity: 0.5;
+    // z-index: 10;
   }
 }
 

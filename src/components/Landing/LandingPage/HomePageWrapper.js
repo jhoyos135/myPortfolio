@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import FloatingNav from '../../Navigation/FloatingNav';
 import Navigation from '../../Navigation/Navigation';
 import BottomNavigation from '../../Navigation/BottomNavigation';
 import TopNavigation from '../../Navigation/TopNavigation';
 import Timeline from './Timeline';
 import queryString from "query-string";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+import { particleOptions } from './data';
+
+
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
+import './style.scss';
 import colors from '../../../globalStyles.scss'
-
-import styled from 'styled-components'
-import './style.scss'
-
-const StyledDiv = styled.div`
-    position: relative;
-    height: 100%;
-    width: 100%;
-`
 
 
 export class HomePageWrapper extends Component {
@@ -55,7 +52,7 @@ export class HomePageWrapper extends Component {
     onScroll = (e) => {
         const { currentVisiblePage } = this.state;
         const query = document.querySelector(`#${currentVisiblePage}`);
-        const distance = query.getBoundingClientRect().top - 50;
+        const distance = query.getBoundingClientRect().top - 36;
         this.setState({ scrollPosition: { [currentVisiblePage]: Math.round(distance) } })
         this.renderLeftContent();
     }
@@ -69,45 +66,73 @@ export class HomePageWrapper extends Component {
     renderLeftContent = () => {
         const { leftContent } = this.props;
         const { currentVisiblePage } = this.state;
-        return leftContent.map((x, index) => {
+        const showNode = (show, hide) => {
+            if (
+                (
+                    ((show >= this.state.scrollPosition[currentVisiblePage]) &&
+                        ((hide <= this.state.scrollPosition[currentVisiblePage]))) ||
+                    ((show <= this.state.scrollPosition[currentVisiblePage]) &&
+                        ((hide >= this.state.scrollPosition[currentVisiblePage])))
+                )
+            ) {
+                return true
+            }
+            return false
+        }
+        return leftContent?.map((x) => {
             if (x.id === currentVisiblePage) {
-
                 return (
                     <>
-
-                        {
-                            x.id === currentVisiblePage && (
-                                <>
-                                    {x.node}
-                                </>
-                            )
-                        }
-
-                        {
-                            x?.subNodes && x?.subNodes?.map(({ node, show, hide, innerStyles }, index) => (
-                                // scrollTopPosition is where you want the node to start and hide where you want it to end
-                                // Infinity means is the last scrollable content
-                                (
-                                    (
-                                        ((show >= this.state.scrollPosition[currentVisiblePage]) &&
-                                            ((hide <= this.state.scrollPosition[currentVisiblePage]))) ||
-                                        ((show <= this.state.scrollPosition[currentVisiblePage]) &&
-                                            ((hide >= this.state.scrollPosition[currentVisiblePage])))
-                                    )
-                                ) && (
+                        <Particles
+                            id="tsparticles"
+                            init={async (main) => {
+                                await loadFull(main);
+                            }}
+                            options={particleOptions(currentVisiblePage)}
+                        />
+                        <div style={{
+                            width: '100%',
+                            height: '100%',
+                            position: 'absolute',
+                            opacity: '0.5',
+                            top: '0',
+                            bottom: '0',
+                            left: '0',
+                            right: '0',
+                            background: colors.overlay,
+                            zIndex: '0'
+                        }} />
+                        <Parallax
+                            style={{ height: '100%', zIndex: '2' }}
+                            rootMargin={{ top: -100, right: 100, bottom: 100, left: 100 }}
+                            speed={7}
+                            disabled={x?.disabledParallax}
+                            easing={'easeOut'}
+                            translateX={-this.state.scrollPosition[currentVisiblePage]}>
+                            {
+                                (x.id === currentVisiblePage || x.node) && (
                                     <>
-                                        {node}
+                                        {x.node}
                                     </>
                                 )
-                            )
-                            )
-                        }
+                            }
+                            {
+                                x?.subNodes && x?.subNodes?.map(({ node, show, hide, height }, index) => (
+                                    <span style={{
+                                        height,
+                                        transition: 'all 0.1s ease 0s',
+                                        opacity: showNode(show, hide) ? '1' : '0'
+                                    }}>
+                                        {node}
+                                    </span>
+                                )
+                                )
+                            }
+                        </Parallax>
+
                     </>
                 )
             }
-
-
-
         })
     }
 
@@ -118,21 +143,33 @@ export class HomePageWrapper extends Component {
             <>
                 <TopNavigation route={route} history={history} />
                 <div className='HomePageWrapper' style={{ position: 'relative' }}>
+
                     <div className='HomePageWrapper__left'>
-                        <div className='HomePageWrapper__left-content'>
-                            <Navigation
-                                currentVisiblePage={currentVisiblePage}
-                                route={route}
-                                history={history}
-                            />
-                            {
-                                this.renderLeftContent()
-                            }
-                        </div>
+                        <ParallaxProvider>
+                            <div className='HomePageWrapper__left-content'>
+                                <Navigation
+                                    currentVisiblePage={currentVisiblePage}
+                                    route={route}
+                                    history={history}
+                                />
+
+                                <div
+                                    style={{
+                                        flex: 'auto',
+                                        overflow: 'hidden',
+                                    }}
+                                >
+
+                                    {
+                                        this.renderLeftContent()
+                                    }
+                                </div>
+                            </div>
+                        </ParallaxProvider>
                     </div>
                     <Timeline
-                        onScroll={this.onScroll}
                         {...this.props}
+                        onScroll={this.onScroll}
                         ref={this.scrollRef}
                         setVisible={(current) => this.setVisible(current)}
                     />

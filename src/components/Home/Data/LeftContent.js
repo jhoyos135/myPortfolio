@@ -1,35 +1,36 @@
 import colors from '../../../globalStyles.scss';
 import { Animation } from '../../core/Animation';
-import { imageData } from '../../imageData';
 
+export const flexCenter = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+}
+export const gridCenter = {
+    gridColumn: '2',
+    gridRow: '2'
+}
+export const gridFull = {
+    gridColumn: '1/end',
+    gridRow: '1/end'
+}
 
 export const leftContent = [
     {
         id: 'about',
-        outerStyles: {
-            color: colors.white,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gridColumn: '2/4'
-        },
+        disabledParallax: true,
         node: (
             <Animation
-                type={'fadeInLeft'}
+                type={'fadeIn'}
             >
-                {'About'}
+                <div style={{ ...flexCenter, ...gridFull }}>
+                    {'About'}
+                </div>
             </Animation>
         ),
     },
     {
         id: 'projects',
-        outerStyles: {
-            color: colors.white,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gridColumn: '2/4'
-        },
         node: (
             <Animation>
                 {'Projects'}
@@ -59,13 +60,6 @@ export const leftContent = [
     },
     {
         id: 'experience',
-        outerStyles: {
-            color: colors.white,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gridColumn: '2/4'
-        },
         node: (
             <Animation>
                 {'Experience'}
@@ -74,46 +68,37 @@ export const leftContent = [
     },
     {
         id: 'playground',
-        node: (
-            <>
-                <Animation
-                    type={'fadeInUpBig'}
-                    style={{
-                        position: 'relative',
-                        gridColumn: '1/end',
-                        gridRow: '1/end'
-                    }}>
-                    <div
-                        style={{
-                            position: 'absolute',
-                            top: '0px',
-                            right: '0px',
-                            bottom: '0px',
-                            left: '0px',
-                            background: colors.overlay,
-                            filter: 'blur(35px)'
-
-                        }}
-                    >
-                    </div>
-                    <img style={{ width: '100%', height: '100%' }} src={imageData.find(x => x.section === 'playground').image} />
-                </Animation>
-            </>
-        ),
         subNodes: [
             {
-                show: 400,
-                hide: -400,
+                show: 600,
+                hide: -600,
                 node: (
                     <Animation
-                        type={'fadeIn'}
+                        height={'100%'}
                         style={{
-                            gridColumn: '3/5',
-                            gridRow: '2/4',
                             zIndex: '10',
-                            color: colors.white
-                        }}>
-                        {'test'}
+                            color: colors.black,
+                        }}
+                        type={'fadeInUp'}
+                    >
+                        <div style={{ ...flexCenter, ...gridCenter }}>
+                            {'test'}
+                        </div>
+                    </Animation>
+                )
+            },
+            {
+                show: 400,
+                hide: -600,
+                node: (
+                    <Animation
+                        height={'50%'}
+                        type={'fadeInUp'}
+                        style={{
+                            color: colors.black,
+                        }}
+                    >
+                        {'test 2'}
                     </Animation>
                 )
             },
@@ -122,13 +107,6 @@ export const leftContent = [
     },
     {
         id: 'contact',
-        outerStyles: {
-            color: colors.white,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gridColumn: '2/4'
-        },
         node: (
             <Animation>
                 {'Contact'}
