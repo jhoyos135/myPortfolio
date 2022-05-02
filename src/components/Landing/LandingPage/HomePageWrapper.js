@@ -7,7 +7,7 @@ import queryString from "query-string";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { particleOptions } from './data';
-
+import { Animation } from '../../core/Animation';
 
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import './style.scss';
@@ -49,18 +49,45 @@ export class HomePageWrapper extends Component {
         }
     }
 
-    onScroll = (e) => {
+    onScroll = () => {
         const { currentVisiblePage } = this.state;
         const query = document.querySelector(`#${currentVisiblePage}`);
         const distance = query.getBoundingClientRect().top - 36;
         this.setState({ scrollPosition: { [currentVisiblePage]: Math.round(distance) } })
-        this.renderLeftContent();
     }
 
     setVisible = (current) => {
         this.setState({
             currentVisiblePage: current
         })
+    }
+
+    renderPageNumber = () => {
+        const { currentVisiblePage } = this.state;
+
+        const page = currentVisiblePage === 'about' ? '01/05'
+            : currentVisiblePage === 'projects' ? '02/05'
+                : currentVisiblePage === 'experience' ? '03/05'
+                    : currentVisiblePage === 'playground' ? '04/05'
+                        : currentVisiblePage === 'contact' ? '05/05'
+                            : ''
+        return (
+            <h4
+                style={{
+                    position: 'absolute',
+                    bottom: '0',
+                    right: '0',
+                    zIndex: '11',
+                    margin: '15px',
+                    fontWeight: 'bold',
+                    fontSize: '1.1em',
+                    letterSpacing: colors.letterSpacing,
+                    color: colors.secondary
+                }}
+            >
+                {page}
+            </h4>
+        )
     }
 
     renderLeftContent = () => {
@@ -83,6 +110,24 @@ export class HomePageWrapper extends Component {
             if (x.id === currentVisiblePage) {
                 return (
                     <>
+                        <h1 style={{
+                            writingMode: 'vertical-rl',
+                            position: 'absolute',
+                            top: '0',
+                            right: '0',
+                            letterSpacing: colors.letterSpacing,
+                            fontSize: '5em',
+                            color: colors.third
+                        }}>
+                            <Animation
+                                style={{
+                                    margin: '15px'
+                                }}
+                                type={'fadeInRight'}
+                            >
+                                {x?.header}
+                            </Animation>
+                        </h1>
                         <Particles
                             id="tsparticles"
                             init={async (main) => {
@@ -90,6 +135,9 @@ export class HomePageWrapper extends Component {
                             }}
                             options={particleOptions(currentVisiblePage)}
                         />
+                        {
+                            this.renderPageNumber()
+                        }
                         <div style={{
                             width: '100%',
                             height: '100%',
@@ -129,7 +177,6 @@ export class HomePageWrapper extends Component {
                                 )
                             }
                         </Parallax>
-
                     </>
                 )
             }
@@ -159,7 +206,6 @@ export class HomePageWrapper extends Component {
                                         overflow: 'hidden',
                                     }}
                                 >
-
                                     {
                                         this.renderLeftContent()
                                     }

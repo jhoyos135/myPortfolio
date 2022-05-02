@@ -8,7 +8,7 @@ export const rightContent = [
         id: 0,
         route: 'about',
         node: (
-            <Layout header={'ABOUT'}>
+            <Layout>
 
             </Layout>
         )
@@ -17,7 +17,7 @@ export const rightContent = [
         id: 1,
         route: 'projects',
         node: (
-            <Layout header={'PROJECTS'}>
+            <Layout>
 
             </Layout>
         )
@@ -26,7 +26,7 @@ export const rightContent = [
         id: 2,
         route: 'experience',
         node: (
-            <Layout header={'EXPERIENCE'}>
+            <Layout>
 
             </Layout>
         )
@@ -35,7 +35,7 @@ export const rightContent = [
         id: 3,
         route: 'playground',
         node: (
-            <Layout header={'PLAYGROUND'}>
+            <Layout>
                 <CodePenDisplay
                     header='Scroll Detector'
                     hash={'zYOrLzq'}
@@ -83,7 +83,7 @@ export const rightContent = [
         id: 4,
         route: 'contact',
         node: (
-            <Layout header={'CONTACT'}>
+            <Layout>
 
             </Layout>
         )

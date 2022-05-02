@@ -22,7 +22,7 @@ export const particleOptions = (section) => {
             number: {
                 value: 0,
                 density: {
-                    enable: true,
+                    enable: false,
                 }
             },
             color: {
@@ -41,20 +41,20 @@ export const particleOptions = (section) => {
                 },
             },
             opacity: {
-                value: 0.7,
+
+                value: 1,
                 random: true,
                 anim: {
                     enable: true,
                     speed: 1,
-                    opacity_min: 0.9,
+                    opacity_min: 1,
                     sync: false
                 }
             },
-
             size: {
-                value: { min: 50, max: 150 },
+                value: { min: 50, max: 300 },
                 random: {
-                    enable: false,
+                    enable: true,
                     minimumValue: 40
                 }
             },
@@ -64,7 +64,7 @@ export const particleOptions = (section) => {
                 speed: 1,
                 direction: "none",
                 random: true,
-                straight: false,
+                straight: true,
                 outMode: "destroy",
                 attract: {
                     enable: false,
@@ -77,7 +77,7 @@ export const particleOptions = (section) => {
             detectsOn: "window",
             events: {
                 onhover: {
-                    enable: true,
+                    enable: false,
                     mode: "trail"
                 },
                 onclick: {

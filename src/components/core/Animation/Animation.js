@@ -23,23 +23,24 @@ z-index: 2;
         opacity: 1;
     }
 };
-
-`
+`;
+const AnimationDiv = styled.div`
+position: relative;
+// sets grid inside sub node section
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr;
+height: 100%;
+width: 100%;
+animation-name: ${(props) => props.AnimationKeyFrame};
+animation-duration: ${(props) => props.duration};
+animation-delay: ${(props) => props.delay};
+animation-fill-mode: forwards;
+`;
 
 
 export const Animation = ({ children, duration, delay, type, style, height, width }) => {
     const AnimationKeyFrame = keyframes`${animation[type]}`;
-    const AnimationDiv = styled.div`
-                position: relative;
-                // sets grid inside sub node section
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-template-rows: 1fr 1fr 1fr;
-                height: 100%;
-                width: 100%;
-                animation: ${duration} ${AnimationKeyFrame} ${delay};
-                animation-fill-mode: forwards;
-                `;
     return (
         <DivTag style={{
             ...style,
@@ -48,7 +49,20 @@ export const Animation = ({ children, duration, delay, type, style, height, widt
             display: 'flex',
             justifyContent: 'center'
         }}>
-            <AnimationDiv>
+            <AnimationDiv
+                AnimationKeyFrame={AnimationKeyFrame}
+                delay={delay}
+                duration={duration}
+                style={{
+                    position: 'relative',
+                    // sets grid inside sub node section
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr 1fr',
+                    gridTemplateRows: '1fr 1fr 1fr',
+                    height: '100%',
+                    width: '100%',
+                    animationFillMode: 'forwards'
+                }}>
                 {children}
             </AnimationDiv>
         </DivTag>

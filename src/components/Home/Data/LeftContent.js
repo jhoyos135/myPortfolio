@@ -1,5 +1,6 @@
 import colors from '../../../globalStyles.scss';
 import { Animation } from '../../core/Animation';
+import HeaderContentWrapper from '../HeaderContentWrapper'
 
 export const flexCenter = {
     display: 'flex',
@@ -14,35 +15,44 @@ export const gridFull = {
     gridColumn: '1/end',
     gridRow: '1/end'
 }
+export const absoluteTopLeft = {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    margin: '15px'
+}
 
 export const leftContent = [
     {
         id: 'about',
         disabledParallax: true,
-        node: (
-            <Animation
-                type={'fadeIn'}
-            >
-                <div style={{ ...flexCenter, ...gridFull }}>
-                    {'About'}
-                </div>
-            </Animation>
-        ),
+        header: 'ABOUT',
+        subNodes: [
+            {
+                show: 0,
+                hide: -10000,
+                node: (
+                    <Animation>
+                        <div style={{ ...flexCenter, ...gridFull }}>
+                            {'about test'}
+                        </div>
+                    </Animation>
+                )
+            },
+        ]
     },
     {
         id: 'projects',
-        node: (
-            <Animation>
-                {'Projects'}
-            </Animation>
-        ),
+        header: 'PROJECTS',
         subNodes: [
             {
-                show: 100,
+                show: 0,
                 hide: 10,
                 node: (
                     <Animation>
-                        {'test'}
+                        <div style={{ ...flexCenter }}>
+                            {'test'}
+                        </div>
                     </Animation>
                 )
             },
@@ -51,7 +61,9 @@ export const leftContent = [
                 hide: -400,
                 node: (
                     <Animation>
-                        {'test 2'}
+                        <div style={{ ...flexCenter }}>
+                            {'test'}
+                        </div>
                     </Animation>
                 )
             },
@@ -60,14 +72,24 @@ export const leftContent = [
     },
     {
         id: 'experience',
-        node: (
-            <Animation>
-                {'Experience'}
-            </Animation>
-        ),
+        header: 'EXPERIENCE',
+        subNodes: [
+            {
+                show: 100,
+                hide: 10,
+                node: (
+                    <Animation>
+                        <div style={{ ...flexCenter }}>
+                            {'test'}
+                        </div>
+                    </Animation>
+                )
+            },
+        ]
     },
     {
         id: 'playground',
+        header: 'PLAYGROUND',
         subNodes: [
             {
                 show: 600,
@@ -107,11 +129,21 @@ export const leftContent = [
     },
     {
         id: 'contact',
-        node: (
-            <Animation>
-                {'Contact'}
-            </Animation>
-        ),
+        header: 'CONTACT',
+        subNodes: [
+            {
+                show: 100,
+                hide: 10,
+                node: (
+                    <Animation>
+                        <div style={{ ...flexCenter }}>
+                            {'test'}
+                        </div>
+                    </Animation>
+                )
+            },
+
+        ]
     },
 
 ]
