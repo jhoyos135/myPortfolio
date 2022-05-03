@@ -35,11 +35,12 @@ width: 100%;
 animation-name: ${(props) => props.AnimationKeyFrame};
 animation-duration: ${(props) => props.duration};
 animation-delay: ${(props) => props.delay};
+animation-timing-function: ${(props) => props.timing};
 animation-fill-mode: forwards;
 `;
 
 
-export const Animation = ({ children, duration, delay, type, style, height, width }) => {
+export const Animation = ({ children, duration, delay, type, style, height, width, timing }) => {
     const AnimationKeyFrame = keyframes`${animation[type]}`;
     return (
         <DivTag style={{
@@ -53,6 +54,7 @@ export const Animation = ({ children, duration, delay, type, style, height, widt
                 AnimationKeyFrame={AnimationKeyFrame}
                 delay={delay}
                 duration={duration}
+                timing={timing}
                 style={{
                     position: 'relative',
                     // sets grid inside sub node section
@@ -72,6 +74,7 @@ export const Animation = ({ children, duration, delay, type, style, height, widt
 Animation.defaultProps = {
     type: 'fade',
     duration: '0.3s',
+    timing: 'ease-in-out',
     delay: '0.1s',
     height: '100%',
     width: '100%',

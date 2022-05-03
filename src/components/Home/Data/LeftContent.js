@@ -1,25 +1,17 @@
 import colors from '../../../globalStyles.scss';
 import { Animation } from '../../core/Animation';
-import HeaderContentWrapper from '../HeaderContentWrapper'
 
 export const flexCenter = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
 }
-export const gridCenter = {
-    gridColumn: '2',
-    gridRow: '2'
-}
-export const gridFull = {
-    gridColumn: '1/end',
-    gridRow: '1/end'
-}
-export const absoluteTopLeft = {
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    margin: '15px'
+
+export const gridPosition = (col, row) => {
+    return {
+        gridColumn: col,
+        gridRow: row
+    }
 }
 
 export const leftContent = [
@@ -27,44 +19,55 @@ export const leftContent = [
         id: 'about',
         disabledParallax: true,
         header: 'ABOUT',
-        subNodes: [
-            {
-                show: 0,
-                hide: -10000,
-                node: (
-                    <Animation>
-                        <div style={{ ...flexCenter, ...gridFull }}>
-                            {'about test'}
-                        </div>
-                    </Animation>
-                )
-            },
-        ]
+        node: (
+            <Animation height={'100%'} type={'fadeIn'}>
+                <div style={{ ...flexCenter, ...gridPosition('1/end', '1/end') }}>
+                    {'about test'}
+                </div>
+            </Animation>
+        ),
     },
     {
         id: 'projects',
         header: 'PROJECTS',
         subNodes: [
             {
-                show: 0,
-                hide: 10,
+                show: 1500,
+                hide: 50,
+                height: '100%',
                 node: (
-                    <Animation>
-                        <div style={{ ...flexCenter }}>
+                    <Animation timing={'ease-out'} duration={'0.8s'} height={'100%'} type={'fadeInDown'} >
+                        <div style={{ ...flexCenter, ...gridPosition('1/end', '2') }}>
                             {'test'}
+                        </div>
+                    </Animation >
+                )
+            },
+            {
+                show: 0,
+                hide: -500,
+                height: '100%',
+                node: (
+                    <Animation timing={'ease-out'} duration={'0.8s'} height={'100%'} type={'fadeInDown'}>
+                        <div style={{ ...flexCenter, ...gridPosition('2', '2') }}>
+                            {'test 2'}
                         </div>
                     </Animation>
                 )
             },
             {
-                show: 0,
-                hide: -400,
+                show: -500,
+                hide: -4000,
+                height: '100%',
                 node: (
-                    <Animation>
-                        <div style={{ ...flexCenter }}>
-                            {'test'}
+                    <Animation timing={'ease-out'} duration={'0.8s'} height={'100%'} type={'fadeInDown'}>
+                        <div style={{ ...flexCenter, ...gridPosition('2', '2') }}>
+                            {'test 3'}
                         </div>
-                    </Animation>
+                        <div style={{ ...flexCenter, ...gridPosition('2', '3') }}>
+                            {'test 4'}
+                        </div>
+                    </Animation >
                 )
             },
 
@@ -75,8 +78,8 @@ export const leftContent = [
         header: 'EXPERIENCE',
         subNodes: [
             {
-                show: 100,
-                hide: 10,
+                show: 400,
+                hide: -400,
                 node: (
                     <Animation>
                         <div style={{ ...flexCenter }}>
@@ -92,35 +95,43 @@ export const leftContent = [
         header: 'PLAYGROUND',
         subNodes: [
             {
-                show: 600,
-                hide: -600,
+                show: 1000,
+                hide: -60,
+                height: '100%',
                 node: (
                     <Animation
                         height={'100%'}
-                        style={{
-                            zIndex: '10',
-                            color: colors.black,
-                        }}
                         type={'fadeInUp'}
                     >
-                        <div style={{ ...flexCenter, ...gridCenter }}>
+                        <div
+                            style={{
+                                ...flexCenter,
+                                ...gridPosition('2', '2')
+                            }}
+                        >
                             {'test'}
                         </div>
                     </Animation>
                 )
             },
             {
-                show: 400,
+                show: 1000,
                 hide: -600,
+                height: '100%',
                 node: (
                     <Animation
-                        height={'50%'}
-                        type={'fadeInUp'}
-                        style={{
-                            color: colors.black,
-                        }}
+                        height={'100%'}
+                        type={'fadeIn'}
                     >
-                        {'test 2'}
+                        <div
+                            style={{
+                                ...flexCenter,
+                                ...gridPosition('2', '2')
+                            }}
+                        >
+
+                            {'test 2'}
+                        </div>
                     </Animation>
                 )
             },

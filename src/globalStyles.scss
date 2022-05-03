@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,600;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Roboto:ital,wght@1,300&display=swap"); /* colors */
 $primary: #e3b505;
+$primary_50: #e3b70518;
 $secondary: #2d60b4;
 $third: #b5171d;
 $white: #f5f5f5;
@@ -302,6 +303,17 @@ hr {
 
       background-color: $primary;
       position: absolute;
+    }
+  }
+}
+
+.App {
+  .cursor {
+    div:first-child {
+      background-color: $primary_50 !important;
+    }
+    div:last-child {
+      background-color: $secondary !important;
     }
   }
 }

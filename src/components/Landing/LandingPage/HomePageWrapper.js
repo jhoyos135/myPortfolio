@@ -53,7 +53,7 @@ export class HomePageWrapper extends Component {
         const { currentVisiblePage } = this.state;
         const query = document.querySelector(`#${currentVisiblePage}`);
         const distance = query.getBoundingClientRect().top - 36;
-        this.setState({ scrollPosition: { [currentVisiblePage]: Math.round(distance) } })
+        this.setState({ scrollPosition: { [currentVisiblePage]: distance } })
     }
 
     setVisible = (current) => {
@@ -116,7 +116,7 @@ export class HomePageWrapper extends Component {
                             top: '0',
                             right: '0',
                             letterSpacing: colors.letterSpacing,
-                            fontSize: '5em',
+                            fontSize: '4em',
                             color: colors.third
                         }}>
                             <Animation
@@ -152,11 +152,12 @@ export class HomePageWrapper extends Component {
                         }} />
                         <Parallax
                             style={{ height: '100%', zIndex: '2' }}
-                            rootMargin={{ top: -100, right: 100, bottom: 100, left: 100 }}
-                            speed={7}
+                            rootMargin={{ top: -100, right: 100, bottom: -100, left: 100 }}
+                            speed={1}
                             disabled={x?.disabledParallax}
                             easing={'easeOut'}
-                            translateX={-this.state.scrollPosition[currentVisiblePage]}>
+                            translateX={-this.state.scrollPosition[currentVisiblePage] / 30}
+                        >
                             {
                                 (x.id === currentVisiblePage || x.node) && (
                                     <>
@@ -166,13 +167,14 @@ export class HomePageWrapper extends Component {
                             }
                             {
                                 x?.subNodes && x?.subNodes?.map(({ node, show, hide, height }, index) => (
-                                    <span style={{
+                                    <div style={{
                                         height,
-                                        transition: 'all 0.1s ease 0s',
-                                        opacity: showNode(show, hide) ? '1' : '0'
+                                        transition: 'all 0.1s ease-in-out 0.1s',
+                                        transform: showNode(show, hide) ? 'translateX(0)' : 'translateX(-2000px)',
+                                        display: showNode(show, hide) ? 'block' : 'none',
                                     }}>
                                         {node}
-                                    </span>
+                                    </div>
                                 )
                                 )
                             }

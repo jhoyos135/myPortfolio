@@ -52,7 +52,7 @@ export const particleOptions = (section) => {
                 }
             },
             size: {
-                value: { min: 50, max: 300 },
+                value: { min: 50, max: 250 },
                 random: {
                     enable: true,
                     minimumValue: 40

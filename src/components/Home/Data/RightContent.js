@@ -9,7 +9,9 @@ export const rightContent = [
         route: 'about',
         node: (
             <Layout>
-
+                <div>
+                    {'testing'}
+                </div>
             </Layout>
         )
     },
@@ -18,7 +20,9 @@ export const rightContent = [
         route: 'projects',
         node: (
             <Layout>
-
+                <div>
+                    {'projects'}
+                </div>
             </Layout>
         )
     },
