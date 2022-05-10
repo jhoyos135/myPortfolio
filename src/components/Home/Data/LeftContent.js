@@ -1,4 +1,3 @@
-import colors from '../../../globalStyles.scss';
 import { Animation } from '../../core/Animation';
 
 export const flexCenter = {
@@ -22,7 +21,7 @@ export const leftContent = [
         node: (
             <Animation height={'100%'} type={'fadeIn'}>
                 <div style={{ ...flexCenter, ...gridPosition('1/end', '1/end') }}>
-                    {'about test'}
+                    {'center landing'}
                 </div>
             </Animation>
         ),
@@ -36,7 +35,7 @@ export const leftContent = [
                 hide: 50,
                 height: '100%',
                 node: (
-                    <Animation timing={'ease-out'} duration={'0.8s'} height={'100%'} type={'fadeInDown'} >
+                    <Animation timing={'ease-out'} duration={'0.5s'} height={'100%'} type={'fadeIn'} >
                         <div style={{ ...flexCenter, ...gridPosition('1/end', '2') }}>
                             {'test'}
                         </div>
@@ -44,13 +43,13 @@ export const leftContent = [
                 )
             },
             {
-                show: 0,
+                show: 1,
                 hide: -500,
                 height: '100%',
                 node: (
-                    <Animation timing={'ease-out'} duration={'0.8s'} height={'100%'} type={'fadeInDown'}>
+                    <Animation timing={'ease-out'} duration={'0.5s'} height={'100%'} type={'fadeIn'}>
                         <div style={{ ...flexCenter, ...gridPosition('2', '2') }}>
-                            {'test 2'}
+                            {'center landing'}
                         </div>
                     </Animation>
                 )
@@ -60,7 +59,7 @@ export const leftContent = [
                 hide: -4000,
                 height: '100%',
                 node: (
-                    <Animation timing={'ease-out'} duration={'0.8s'} height={'100%'} type={'fadeInDown'}>
+                    <Animation timing={'ease-out'} duration={'0.5s'} height={'100%'} type={'fadeIn'}>
                         <div style={{ ...flexCenter, ...gridPosition('2', '2') }}>
                             {'test 3'}
                         </div>
@@ -78,12 +77,13 @@ export const leftContent = [
         header: 'EXPERIENCE',
         subNodes: [
             {
-                show: 400,
-                hide: -400,
+                show: 1,
+                hide: -500,
+                height: '100%',
                 node: (
-                    <Animation>
-                        <div style={{ ...flexCenter }}>
-                            {'test'}
+                    <Animation timing={'ease-out'} duration={'0.5s'} height={'100%'} type={'fadeIn'}>
+                        <div style={{ ...flexCenter, ...gridPosition('2', '2') }}>
+                            {'center landing'}
                         </div>
                     </Animation>
                 )
@@ -96,27 +96,7 @@ export const leftContent = [
         subNodes: [
             {
                 show: 1000,
-                hide: -60,
-                height: '100%',
-                node: (
-                    <Animation
-                        height={'100%'}
-                        type={'fadeInUp'}
-                    >
-                        <div
-                            style={{
-                                ...flexCenter,
-                                ...gridPosition('2', '2')
-                            }}
-                        >
-                            {'test'}
-                        </div>
-                    </Animation>
-                )
-            },
-            {
-                show: 1000,
-                hide: -600,
+                hide: 60,
                 height: '100%',
                 node: (
                     <Animation
@@ -129,8 +109,19 @@ export const leftContent = [
                                 ...gridPosition('2', '2')
                             }}
                         >
-
-                            {'test 2'}
+                            {'test'}
+                        </div>
+                    </Animation>
+                )
+            },
+            {
+                show: 1,
+                hide: -500,
+                height: '100%',
+                node: (
+                    <Animation timing={'ease-out'} duration={'0.5s'} height={'100%'} type={'fadeIn'}>
+                        <div style={{ ...flexCenter, ...gridPosition('2', '2') }}>
+                            {'center landing'}
                         </div>
                     </Animation>
                 )
@@ -143,12 +134,13 @@ export const leftContent = [
         header: 'CONTACT',
         subNodes: [
             {
-                show: 100,
-                hide: 10,
+                show: 1,
+                hide: -500,
+                height: '100%',
                 node: (
-                    <Animation>
-                        <div style={{ ...flexCenter }}>
-                            {'test'}
+                    <Animation timing={'ease-out'} duration={'0.5s'} height={'100%'} type={'fadeIn'}>
+                        <div style={{ ...flexCenter, ...gridPosition('2', '2') }}>
+                            {'center landing'}
                         </div>
                     </Animation>
                 )

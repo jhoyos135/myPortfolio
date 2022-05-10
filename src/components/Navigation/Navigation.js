@@ -4,6 +4,7 @@ import colors from '../../globalStyles.scss'
 import classnames from 'classnames';
 import NavigationPopOver from './NavigationPopOver';
 import Icon from './Icon';
+import { getcolor } from '../Landing/LandingPage/data';
 
 
 const Navigation = ({ route, history, currentVisiblePage }) => {
@@ -14,8 +15,6 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
         if (section) {
             history.replace(`/home?section=${id}`)
             section.scrollIntoView();
-            setTimeout(() => {
-            }, 0);
         }
     }
     const onMouseEnter = (value) => {
@@ -35,7 +34,8 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
         justifyContent: 'center',
         alignItems: 'center',
         fontFamily: colors.roboto,
-        letterSpacing: colors.letterSpacing
+        letterSpacing: colors.letterSpacing,
+        backgroundColor: getcolor(currentVisiblePage)
     }
     return (
         <div className='Navigation'>
@@ -63,7 +63,8 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
                                     fontSize={'2em'}
                                     active={currentPage === 'about'}
                                     styles={{
-                                        fontSize: '2em'
+                                        fontSize: '2em',
+
                                     }}
                                 />
                             </div>

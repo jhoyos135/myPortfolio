@@ -4,7 +4,7 @@ import * as animation from 'react-animations';
 
 const DivTag = styled.div`
 position: relative;
-animation: fadeInFromNone 0.3s ease-out 0s;
+animation: fadeInFromNone 0.2s ease-out 0s;
 overflow: hidden;
 z-index: 2;
 @keyframes fadeInFromNone {
@@ -73,7 +73,7 @@ export const Animation = ({ children, duration, delay, type, style, height, widt
 
 Animation.defaultProps = {
     type: 'fade',
-    duration: '0.3s',
+    duration: '0.2s',
     timing: 'ease-in-out',
     delay: '0.1s',
     height: '100%',

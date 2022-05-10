@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { data } from "./data";
 import BottomNavigation from '../../Navigation/BottomNavigation';
+import Loader from '../../core/Loader';
+
 import './style.scss';
+
 
 
 export class LandingPageContainer extends Component {
@@ -14,8 +17,13 @@ export class LandingPageContainer extends Component {
         background: '',
         transitionClass: false,
         loading: true,
+        imageIsLoading: true,
         item: ''
     };
+
+    componentDidMount() {
+
+    }
 
     routeAfterTimerEnds = (item) => {
         //  simulates fetch request since this is only a client side website and there is no MW api request to wait for
@@ -62,7 +70,6 @@ export class LandingPageContainer extends Component {
 
     renderCategories = () => {
         const { isActive, isSelected } = this.state;
-
         return data?.map((item) => {
             return (
                 <div
@@ -82,12 +89,17 @@ export class LandingPageContainer extends Component {
                         {item.backText}
                     </p>
                     <div
-                        className='img'
-                        // small blocks
+                        className={'img'}
                         style={{
-                            backgroundImage: `url("${item.background}")`
+                            background: item.color
                         }}
                     />
+                    {/* <img
+                        style={!this.state.imageIsLoading ? {} : { display: 'none' }}
+                        src={item.background}
+                        onLoad={() => this.setState({ imageIsLoading: false })}
+                        alt={''}
+                    /> */}
                     {/* Front of the square */}
                     <h1 className="front-title">{item.frontText}</h1>
                     <span className="custom-border"></span>
@@ -97,7 +109,7 @@ export class LandingPageContainer extends Component {
     };
 
     render() {
-        const { isActive, background, isSelected } = this.state;
+        const { isActive, background, isSelected, imageIsLoading, color } = this.state;
         const { route } = this.props;
         return (
             <>
@@ -107,6 +119,9 @@ export class LandingPageContainer extends Component {
                             'CategoryLandingContainer__container-items': true,
                             'hasSelection': isSelected
                         })}>
+                            {/* {imageIsLoading && (
+                                <Loader loading={imageIsLoading} />
+                            )} */}
                             {this.renderCategories()}
                         </div>
                         {/* Hero Image overlay */}
@@ -120,7 +135,8 @@ export class LandingPageContainer extends Component {
                             <div
                                 className='img'
                                 style={{
-                                    backgroundImage: `url("${background}")`
+                                    background: color
+                                    // backgroundImage: `url("${background}")`
                                 }}
                             />
                         </div>

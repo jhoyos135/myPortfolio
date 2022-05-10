@@ -5,12 +5,17 @@ export const getImage = (section) => {
 }
 
 export const data = [
-    { id: 1, section: 'about', route: 'home', color: 'blue', frontText: 'ABOUT', backText: 'Come in, and find out who I am' },
-    { id: 2, section: 'projects', route: 'home', color: 'green', frontText: 'PROJECTS', backText: 'Take a look at some of my selected projects' },
-    { id: 3, section: 'experience', route: 'home', color: 'red', frontText: 'EXPERIENCE', backText: 'Where I\'ve been, where I am and where I want to go.' },
-    { id: 4, section: 'playground', route: 'home', color: 'pink', background: getImage('playground'), frontText: 'PLAYGROUND', backText: 'A collection of front-end coding. These are a mix of features from previous work, practice and side projects.' },
-    { id: 5, section: 'contact', route: 'home', color: 'purple', frontText: 'CONTACT', backText: 'Can\'t wait to hear from you' }
+    { id: 1, section: 'about', route: 'home', color: '#2D60B4', frontText: 'ABOUT', backText: 'Come in, and find out who I am' },
+    { id: 2, section: 'projects', route: 'home', color: '#528E63', frontText: 'PROJECTS', backText: 'Take a look at some of my selected projects' },
+    { id: 3, section: 'experience', route: 'home', color: '#B5171D', frontText: 'EXPERIENCE', backText: 'Where I\'ve been, where I am and where I want to go.' },
+    { id: 4, section: 'playground', route: 'home', color: '#471D5D', background: getImage('playground'), frontText: 'PLAYGROUND', backText: 'A collection of front-end coding. These are a mix of features from previous work, practice and side projects.' },
+    { id: 5, section: 'contact', route: 'home', color: '#F4B02A', frontText: 'CONTACT', backText: 'Can\'t wait to hear from you' }
 ];
+
+export const getcolor = (section) => {
+    return data?.find(x => x?.section === section)?.color
+}
+
 
 export const particleOptions = (section) => {
     return {
@@ -26,7 +31,7 @@ export const particleOptions = (section) => {
                 }
             },
             color: {
-                value: "#333",
+                value: ["#e3b505", "#2d60b4", "#b5171d"],
                 animation: {
                     enable: false,
                     speed: 10,
@@ -34,7 +39,7 @@ export const particleOptions = (section) => {
                 }
             },
             shape: {
-                type: "square",
+                type: ["square", "circle", 'triangle'],
                 stroke: {
                     width: 1,
                     color: "#b5171d"
@@ -52,10 +57,10 @@ export const particleOptions = (section) => {
                 }
             },
             size: {
-                value: { min: 50, max: 250 },
+                value: { min: 2, max: 50 },
                 random: {
                     enable: true,
-                    minimumValue: 40
+                    minimumValue: 5
                 }
             },
 
@@ -116,8 +121,8 @@ export const particleOptions = (section) => {
             }
         },
         background: {
-            color: "#000000",
-            image: `url('${getImage(section)}')`,
+            color: getcolor(section),
+            // image: `url('${getImage(section)}')`,
             position: "50% 50%",
             repeat: "no-repeat",
             size: "cover",

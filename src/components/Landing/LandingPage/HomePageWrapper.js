@@ -8,9 +8,10 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { particleOptions } from './data';
 import { Animation } from '../../core/Animation';
-
+import { getcolor } from './data';
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import './style.scss';
+import Loader from '../../core/Loader';
 import colors from '../../../globalStyles.scss'
 
 
@@ -18,6 +19,7 @@ export class HomePageWrapper extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loading: true,
             scrollPosition: 0,
             currentVisiblePage: 'about'
         }
@@ -31,6 +33,8 @@ export class HomePageWrapper extends Component {
 
         if (section) {
             this.scrollTo(section)
+
+            this.customTimeOut(2000)
         }
         document.addEventListener("scroll", this.onScroll);
     }
@@ -40,12 +44,21 @@ export class HomePageWrapper extends Component {
         document.removeEventListener("scroll", this.onScroll);
     }
 
+    customTimeOut = (time) => {
+        // fake waiting until it scrolls to
+        setTimeout(() => {
+            this.setState({
+                loading: false
+            })
+        }, time);
+    }
+
     scrollTo = (id) => {
         const section = document.querySelector(`#${id}`);
         if (section) {
             setTimeout(() => {
                 section.scrollIntoView();
-            }, 0);
+            }, 500);
         }
     }
 
@@ -82,7 +95,7 @@ export class HomePageWrapper extends Component {
                     fontWeight: 'bold',
                     fontSize: '1.1em',
                     letterSpacing: colors.letterSpacing,
-                    color: colors.secondary
+                    color: getcolor(this.state.currentVisiblePage)
                 }}
             >
                 {page}
@@ -120,8 +133,10 @@ export class HomePageWrapper extends Component {
                             color: colors.third
                         }}>
                             <Animation
+                                timing={'ease-out'} duration={'0.5s'}
                                 style={{
-                                    margin: '15px'
+                                    margin: '15px',
+                                    color: getcolor(this.state.currentVisiblePage)
                                 }}
                                 type={'fadeInRight'}
                             >
@@ -153,11 +168,12 @@ export class HomePageWrapper extends Component {
                         <Parallax
                             style={{ height: '100%', zIndex: '2' }}
                             rootMargin={{ top: -100, right: 100, bottom: -100, left: 100 }}
-                            speed={1}
+                            speed={10}
                             disabled={x?.disabledParallax}
                             easing={'easeOut'}
-                            translateX={-this.state.scrollPosition[currentVisiblePage] / 30}
+                            translateX={-this.state.scrollPosition[currentVisiblePage] / 25}
                         >
+
                             {
                                 (x.id === currentVisiblePage || x.node) && (
                                     <>
@@ -192,6 +208,9 @@ export class HomePageWrapper extends Component {
             <>
                 <TopNavigation route={route} history={history} />
                 <div className='HomePageWrapper' style={{ position: 'relative' }}>
+                    {this.state.loading && (
+                        <Loader loading={this.state.loading} />
+                    )}
 
                     <div className='HomePageWrapper__left'>
                         <ParallaxProvider>

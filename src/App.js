@@ -11,7 +11,7 @@ function App() {
       <div className='cursor'>
         <AnimatedCursor
           innerSize={10}
-          outerSize={50}
+          outerSize={15}
           outerAlpha={0.2}
           innerScale={0.7}
           outerScale={5}

@@ -10,7 +10,7 @@ $header: #00607a;
 $black-50: rgba(0, 0, 0, 0.5);
 $overlay: linear-gradient(
   150deg,
-  rgba(227, 181, 5, 0.3) 0%,
+  #f5f5f563 0%,
   #f5f5f5 50%,
   rgba(181, 23, 29, 0.1) 100%
 );
@@ -113,7 +113,7 @@ hr {
 
   /* the "track" of the scroll you can change to */
   &::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 0.6rem $primary;
+    box-shadow: inset 0 0 0.6rem $black;
   }
 
   /* the buttons, top and bottom, of the scroll bar... single vs doublesided buttons */
@@ -139,13 +139,13 @@ hr {
 
   /* Scroll handle (the part you drag) */
   &::-webkit-scrollbar-thumb {
-    background: $third;
+    background: $black;
     border-radius: 5px;
   }
 
   /* Scroll handle on hover */
   &::-webkit-scrollbar-thumb:hover {
-    background: $third;
+    background: $black;
   }
 }
 .custom-scroller {
@@ -275,13 +275,13 @@ hr {
     font-size: 0.9em;
     padding: 15px;
     margin-left: 15px;
-    background: $primary;
+    background: $black;
     font-family: $roboto;
     letter-spacing: 5px;
-    color: $third;
+    color: $white;
     border-radius: 5px;
     /* Border */
-    border: 1px solid $primary;
+    border: 1px solid $black;
 
     /* Used to position the arrow */
     position: relative;
@@ -291,8 +291,8 @@ hr {
       top: 50%;
 
       /* Border */
-      border-bottom: 1px solid $primary;
-      border-left: 1px solid $primary;
+      border-bottom: 1px solid $black;
+      border-left: 1px solid $black;
       transform: translate(-50%, -50%) rotate(45deg);
     }
     .container__arrow {
@@ -301,7 +301,7 @@ hr {
       width: 16px;
       z-index: -1;
 
-      background-color: $primary;
+      background-color: $black;
       position: absolute;
     }
   }
@@ -310,10 +310,10 @@ hr {
 .App {
   .cursor {
     div:first-child {
-      background-color: $primary_50 !important;
+      background-color: $black_50 !important;
     }
     div:last-child {
-      background-color: $secondary !important;
+      background-color: $black !important;
     }
   }
 }
