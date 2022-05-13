@@ -2,7 +2,7 @@ import React from 'react';
 import GridLoader from "react-spinners/GridLoader";
 
 
-const Loader = ({ loading }) => {
+const Loader = ({ loading, Loader }) => {
     return (
         <div style={{
             position: 'absolute',

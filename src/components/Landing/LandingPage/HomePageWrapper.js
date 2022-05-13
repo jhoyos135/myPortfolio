@@ -34,7 +34,7 @@ export class HomePageWrapper extends Component {
         if (section) {
             this.scrollTo(section)
 
-            this.customTimeOut(2000)
+            this.customTimeOut(1500)
         }
         document.addEventListener("scroll", this.onScroll);
     }
@@ -209,7 +209,7 @@ export class HomePageWrapper extends Component {
                 <TopNavigation route={route} history={history} />
                 <div className='HomePageWrapper' style={{ position: 'relative' }}>
                     {this.state.loading && (
-                        <Loader loading={this.state.loading} />
+                        <Loader currentVisiblePage={currentVisiblePage} loading={this.state.loading} />
                     )}
 
                     <div className='HomePageWrapper__left'>

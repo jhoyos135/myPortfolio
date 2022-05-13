@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { data } from "./data";
 import BottomNavigation from '../../Navigation/BottomNavigation';
-import Loader from '../../core/Loader';
-
+import colors from '../../../globalStyles.scss'
 import './style.scss';
 
 
@@ -15,20 +14,17 @@ export class LandingPageContainer extends Component {
         isSelected: null,
         color: "",
         background: '',
+        header: '',
         transitionClass: false,
         loading: true,
         imageIsLoading: true,
         item: ''
     };
 
-    componentDidMount() {
-
-    }
-
     routeAfterTimerEnds = (item) => {
         //  simulates fetch request since this is only a client side website and there is no MW api request to wait for
         // done for animation purposes
-        this.timer = setInterval(() => this.setState(() => ({ loading: false, item })), 1200);
+        this.timer = setInterval(() => this.setState(() => ({ loading: false, item })), 1000);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -42,7 +38,8 @@ export class LandingPageContainer extends Component {
             this.setState(() => ({
                 isActive: item.id,
                 color: item.color,
-                background: item.background
+                background: item.background,
+                header: item.frontText
             }));
         }
     };
@@ -51,7 +48,8 @@ export class LandingPageContainer extends Component {
             this.setState(() => ({
                 isActive: "",
                 color: "",
-                background: ''
+                background: "",
+                header: ""
             }));
         }
     };
@@ -59,13 +57,45 @@ export class LandingPageContainer extends Component {
     handleSelection = (e, item, id) => {
         this.setState(() => {
             return { transitionClass: true, isSelected: item.id }
-        }, this.routeAfterTimerEnds(id)
+        }
+            , this.routeAfterTimerEnds(id)
         )
     }
 
     navigateTo = (item) => {
         const { history } = this.props;
         history.push(`/home/?section=${item}`)
+    }
+
+    renderHeader = (item) => {
+        console.log(item)
+        const gridPlacement = item === 'ABOUT' ? { gridColumn: '2/4', gridRow: '1/2' } :
+            item === 'PROJECTS' ? { gridColumn: '2/3', gridRow: '2/3' } :
+                item === 'EXPERIENCE' ? { gridColumn: '1/3', gridRow: '1/3' } :
+                    item === 'PLAYGROUND' ? { gridColumn: '1/4', gridRow: '1/2' } :
+                        { gridColumn: '1/4', gridRow: '1/2' }
+        return (
+            <div style={{
+                color: colors.white,
+                zIndex: 10,
+                width: '100%',
+                height: '100%',
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr 1fr',
+                gridTemplateRows: '1fr 1fr',
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+                <h1 style={{
+                    ...gridPlacement,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    fontSize: '5em'
+                }}>
+                    {item}
+                </h1>
+            </div>
+        )
     }
 
     renderCategories = () => {
@@ -109,7 +139,7 @@ export class LandingPageContainer extends Component {
     };
 
     render() {
-        const { isActive, background, isSelected, imageIsLoading, color } = this.state;
+        const { isActive, background, isSelected, header, color } = this.state;
         const { route } = this.props;
         return (
             <>
@@ -138,7 +168,9 @@ export class LandingPageContainer extends Component {
                                     background: color
                                     // backgroundImage: `url("${background}")`
                                 }}
-                            />
+                            >
+                                {this.renderHeader(header)}
+                            </div>
                         </div>
                     </div>
                 </div>
