@@ -28,11 +28,10 @@ export class HomePageWrapper extends Component {
 
     //attach our function to document event listener on scrolling whole doc
     componentDidMount() {
-        const { history } = this.props;
-        const { section } = queryString.parse(history.location.search);
+        const { landingSection } = this.props;
 
-        if (section) {
-            this.scrollTo(section)
+        if (landingSection) {
+            this.scrollTo(landingSection)
 
             this.customTimeOut(1500)
         }

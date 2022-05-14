@@ -33,7 +33,7 @@ export class Router extends Component {
                         />
                         <Route
                             exact
-                            path='/home*'
+                            path='/home'
                             render={(routeProps) => (
                                 <HomeLandingPage
                                     landingSection={this.state.section}

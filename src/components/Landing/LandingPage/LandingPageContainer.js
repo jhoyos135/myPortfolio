@@ -29,7 +29,7 @@ export class LandingPageContainer extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.loading !== prevState.loading) {
-            this.navigateTo(this.state.item);
+            this.navigateTo();
         }
     }
 
@@ -65,9 +65,9 @@ export class LandingPageContainer extends Component {
         )
     }
 
-    navigateTo = (item) => {
+    navigateTo = () => {
         const { history } = this.props;
-        history.push(`/home/?section=${item}`)
+        history.push(`/home`)
     }
 
     renderHeader = (item) => {
