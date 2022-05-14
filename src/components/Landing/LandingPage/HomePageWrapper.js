@@ -202,14 +202,14 @@ export class HomePageWrapper extends Component {
     }
 
     render() {
-        const { route, history } = this.props;
+        const { route, history, landingSection } = this.props;
         const { currentVisiblePage } = this.state;
         return (
             <>
                 <TopNavigation route={route} history={history} />
                 <div className='HomePageWrapper' style={{ position: 'relative' }}>
                     {this.state.loading && (
-                        <Loader currentVisiblePage={currentVisiblePage} loading={this.state.loading} />
+                        <Loader currentVisiblePage={landingSection} loading={this.state.loading} />
                     )}
 
                     <div className='HomePageWrapper__left'>

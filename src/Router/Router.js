@@ -23,14 +23,23 @@ export class Router extends Component {
                             exact
                             path='/'
                             render={(routeProps) => (
-                                <LandingPageContainer route={'landing'} {...this.props} {...routeProps} />
+                                <LandingPageContainer
+                                    route={'landing'}
+                                    handleSection={this.handleSection}
+                                    {...this.props}
+                                    {...routeProps}
+                                />
                             )}
                         />
                         <Route
                             exact
                             path='/home*'
                             render={(routeProps) => (
-                                <HomeLandingPage  {...this.props} {...routeProps} />
+                                <HomeLandingPage
+                                    landingSection={this.state.section}
+                                    {...this.props}
+                                    {...routeProps}
+                                />
                             )}
                         />
                     </LandingContainer>

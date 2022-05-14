@@ -38,8 +38,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy1": "aws s3 sync build/ s3://codexwithjulian.com",
-    "deploy2": "aws s3 sync build/ s3://www.codexwithjulian.com",
+    "deploy1": "aws s3 sync build/ s3://codeanywherewithjulian.com",
+    "deploy2": "aws s3 sync build/ s3://www.codeanywherewithjulian.com",
     "deploy": "npm run deploy1 & npm run deploy2"
   },
   "eslintConfig": {
