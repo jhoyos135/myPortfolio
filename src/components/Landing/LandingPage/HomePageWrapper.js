@@ -3,16 +3,22 @@ import Navigation from '../../Navigation/Navigation';
 import BottomNavigation from '../../Navigation/BottomNavigation';
 import TopNavigation from '../../Navigation/TopNavigation';
 import Timeline from './Timeline';
-import queryString from "query-string";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { particleOptions } from './data';
 import { Animation } from '../../core/Animation';
 import { getcolor } from './data';
-import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
+import { ParallaxProvider, Parallax, ParallaxBanner } from 'react-scroll-parallax';
 import './style.scss';
 import Loader from '../../core/Loader';
 import colors from '../../../globalStyles.scss'
+
+export const gridPosition = (col, row) => {
+    return {
+        gridColumn: col,
+        gridRow: row
+    }
+}
 
 
 export class HomePageWrapper extends Component {
@@ -32,7 +38,6 @@ export class HomePageWrapper extends Component {
 
         if (landingSection) {
             this.scrollTo(landingSection)
-
             this.customTimeOut(1500)
         }
         document.addEventListener("scroll", this.onScroll);
@@ -119,82 +124,98 @@ export class HomePageWrapper extends Component {
             return false
         }
         return leftContent?.map((x) => {
+
             if (x.id === currentVisiblePage) {
                 return (
-                    <>
-                        <h1 style={{
-                            writingMode: 'vertical-rl',
-                            position: 'absolute',
-                            top: '0',
-                            right: '0',
-                            letterSpacing: colors.letterSpacing,
-                            fontSize: '4em',
-                            color: colors.third
-                        }}>
-                            <Animation
-                                timing={'ease-out'} duration={'0.5s'}
-                                style={{
-                                    margin: '15px',
-                                    color: getcolor(this.state.currentVisiblePage)
+                    <ParallaxProvider scrollAxis={x.direction ? 'vertical' : 'horizontal'}>
+                        <>
+                            <h1 style={{
+                                writingMode: 'vertical-rl',
+                                position: 'absolute',
+                                top: '0',
+                                right: '0',
+                                letterSpacing: colors.letterSpacing,
+                                fontSize: '4em',
+                                color: colors.third
+                            }}>
+                                <Animation
+                                    timing={'ease-out'} duration={'0.5s'}
+                                    style={{
+                                        margin: '15px',
+                                        color: getcolor(this.state.currentVisiblePage)
+                                    }}
+                                    type={'fadeInRight'}
+                                >
+                                    {x?.header}
+                                </Animation>
+                            </h1>
+                            {/* <Particles
+                                id="tsparticles"
+                                init={async (main) => {
+                                    await loadFull(main);
                                 }}
-                                type={'fadeInRight'}
-                            >
-                                {x?.header}
-                            </Animation>
-                        </h1>
-                        <Particles
-                            id="tsparticles"
-                            init={async (main) => {
-                                await loadFull(main);
-                            }}
-                            options={particleOptions(currentVisiblePage)}
-                        />
-                        {
-                            this.renderPageNumber()
-                        }
-                        <div style={{
-                            width: '100%',
-                            height: '100%',
-                            position: 'absolute',
-                            opacity: '0.5',
-                            top: '0',
-                            bottom: '0',
-                            left: '0',
-                            right: '0',
-                            background: colors.overlay,
-                            zIndex: '0'
-                        }} />
-                        <Parallax
-                            style={{ height: '100%', zIndex: '2' }}
-                            rootMargin={{ top: -100, right: 100, bottom: -100, left: 100 }}
-                            speed={10}
-                            disabled={x?.disabledParallax}
-                            easing={'easeOut'}
-                            translateX={-this.state.scrollPosition[currentVisiblePage] / 25}
-                        >
+                                options={particleOptions(currentVisiblePage)}
+                            /> */}
+                            {
+                                this.renderPageNumber()
+                            }
+                            <div style={{
+                                width: '100%',
+                                height: '100%',
+                                position: 'absolute',
+                                opacity: '0.5',
+                                top: '0',
+                                bottom: '0',
+                                left: '0',
+                                right: '0',
+                                background: colors.overlay,
+                                zIndex: '0'
+                            }} />
+                            <Parallax
+                                style={{
+                                    height: '100%',
+                                    zIndex: '2',
+                                    width: x.width,
+                                    display: 'grid',
+                                    gridTemplateColumns: '1fr 1fr 1fr',
+                                    gridTemplateRows: '1fr 1fr 1fr'
+                                }}
+                                rootMargin={{ top: -100, right: 100, bottom: 100, left: 100 }}
+                                speed={-10}
+                                disabled={x?.disabledParallax}
+                                easing={'easeOut'}
+                                translateX={
+                                    -this.state.scrollPosition[currentVisiblePage] / `${x.translateX ? x.translateX : 30}`
+                                }
 
-                            {
-                                (x.id === currentVisiblePage || x.node) && (
-                                    <>
-                                        {x.node}
-                                    </>
-                                )
-                            }
-                            {
-                                x?.subNodes && x?.subNodes?.map(({ node, show, hide, height }, index) => (
-                                    <div style={{
-                                        height,
-                                        transition: 'all 0.1s ease-in-out 0.1s',
-                                        transform: showNode(show, hide) ? 'translateX(0)' : 'translateX(-2000px)',
-                                        display: showNode(show, hide) ? 'block' : 'none',
-                                    }}>
-                                        {node}
-                                    </div>
-                                )
-                                )
-                            }
-                        </Parallax>
-                    </>
+
+                            >
+
+                                {
+                                    (x.id === currentVisiblePage || x.node) && (
+                                        <div style={{
+                                            ...gridPosition('2', '2')
+                                        }}>
+                                            {x.node}
+                                        </div>
+                                    )
+                                }
+                                {
+                                    x?.subNodes && x?.subNodes?.map(({ node, show, hide, height, gridCol, gridRow }, index) => (
+                                        <div style={{
+                                            height,
+                                            transition: 'all 0.1s ease-in-out 0.1s',
+                                            display: showNode(show, hide) ? 'block' : 'none',
+                                            ...gridPosition(gridCol, gridRow)
+                                        }}>
+                                            {node}
+                                        </div>
+                                    )
+                                    )
+                                }
+                            </Parallax>
+                        </>
+                    </ParallaxProvider>
                 )
             }
         })
@@ -212,26 +233,24 @@ export class HomePageWrapper extends Component {
                     )}
 
                     <div className='HomePageWrapper__left'>
-                        <ParallaxProvider>
-                            <div className='HomePageWrapper__left-content'>
-                                <Navigation
-                                    currentVisiblePage={currentVisiblePage}
-                                    route={route}
-                                    history={history}
-                                />
+                        <div className='HomePageWrapper__left-content'>
+                            <Navigation
+                                currentVisiblePage={currentVisiblePage}
+                                route={route}
+                                history={history}
+                            />
 
-                                <div
-                                    style={{
-                                        flex: 'auto',
-                                        overflow: 'hidden',
-                                    }}
-                                >
-                                    {
-                                        this.renderLeftContent()
-                                    }
-                                </div>
+                            <div
+                                style={{
+                                    flex: 'auto',
+                                    overflow: 'hidden',
+                                }}
+                            >
+                                {
+                                    this.renderLeftContent()
+                                }
                             </div>
-                        </ParallaxProvider>
+                        </div>
                     </div>
                     <Timeline
                         {...this.props}

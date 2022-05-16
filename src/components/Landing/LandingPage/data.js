@@ -24,8 +24,12 @@ export const particleOptions = (section) => {
         },
         fpsLimit: 120,
         particles: {
+            life: {
+                duration: { value: 0 }
+            },
             number: {
                 value: 0,
+                limit: 25,
                 density: {
                     enable: false,
                 }
@@ -39,7 +43,7 @@ export const particleOptions = (section) => {
                 }
             },
             shape: {
-                type: ["square", "circle", 'triangle'],
+                type: 'circle',
                 stroke: {
                     width: 1,
                     color: "#b5171d"
@@ -57,10 +61,10 @@ export const particleOptions = (section) => {
                 }
             },
             size: {
-                value: { min: 2, max: 50 },
+                value: { min: 1, max: 3 },
                 random: {
                     enable: true,
-                    minimumValue: 5
+                    minimumValue: 2
                 }
             },
 
@@ -70,7 +74,7 @@ export const particleOptions = (section) => {
                 direction: "none",
                 random: true,
                 straight: true,
-                outMode: "destroy",
+                outMode: "none",
                 attract: {
                     enable: false,
                     rotateX: 600,
@@ -87,7 +91,7 @@ export const particleOptions = (section) => {
                 },
                 onclick: {
                     enable: true,
-                    mode: "push"
+                    mode: "trail"
                 },
                 resize: false
             },
@@ -100,7 +104,7 @@ export const particleOptions = (section) => {
                 },
                 bubble: {
                     distance: 400,
-                    size: 40,
+                    size: 0,
                     duration: 1,
                     opacity: 1,
                     speed: 3
@@ -109,13 +113,13 @@ export const particleOptions = (section) => {
                     distance: 100
                 },
                 push: {
-                    particles_nb: 1
+                    particles_nb: 0
                 },
                 remove: {
                     particles_nb: 1
                 },
                 trail: {
-                    delay: 0.098,
+                    delay: 0,
                     quantity: 1
                 }
             }
