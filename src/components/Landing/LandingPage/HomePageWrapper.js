@@ -142,28 +142,44 @@ export class HomePageWrapper extends Component {
                                     timing={'ease-out'} duration={'0.5s'}
                                     style={{
                                         margin: '15px',
-                                        color: getcolor(this.state.currentVisiblePage)
+                                        padding: '10px',
+                                        color: getcolor(this.state.currentVisiblePage),
                                     }}
+                                    animationStyle={
+                                        { display: 'flex' }
+                                    }
                                     type={'fadeInRight'}
                                 >
                                     {x?.header}
                                 </Animation>
                             </h1>
-                            {/* <Particles
-                                id="tsparticles"
-                                init={async (main) => {
-                                    await loadFull(main);
-                                }}
-                                options={particleOptions(currentVisiblePage)}
-                            /> */}
                             {
                                 this.renderPageNumber()
                             }
+                            <ParallaxBanner
+                                style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    position: 'absolute',
+                                    opacity: '0.8',
+                                    top: '0',
+                                    bottom: '0',
+                                    left: '0',
+                                    right: '0',
+                                    filter: `hue-rotate(${this.state.scrollPosition[currentVisiblePage]}deg)`
+                                }}
+                                layers={[{
+                                    image: x.background,
+                                    speed: 1,
+                                    translateY: this.state.scrollPosition[currentVisiblePage] / 30
+                                }]}
+                                className="aspect-[2/1]"
+                            />
                             <div style={{
                                 width: '100%',
                                 height: '100%',
                                 position: 'absolute',
-                                opacity: '0.5',
+                                opacity: '0.8',
                                 top: '0',
                                 bottom: '0',
                                 left: '0',
@@ -181,14 +197,12 @@ export class HomePageWrapper extends Component {
                                     gridTemplateRows: '1fr 1fr 1fr'
                                 }}
                                 rootMargin={{ top: -100, right: 100, bottom: 100, left: 100 }}
-                                speed={-10}
+                                speed={1}
                                 disabled={x?.disabledParallax}
                                 easing={'easeOut'}
                                 translateX={
                                     -this.state.scrollPosition[currentVisiblePage] / `${x.translateX ? x.translateX : 30}`
                                 }
-
-
                             >
 
                                 {
@@ -204,6 +218,7 @@ export class HomePageWrapper extends Component {
                                     x?.subNodes && x?.subNodes?.map(({ node, show, hide, height, gridCol, gridRow }, index) => (
                                         <div style={{
                                             height,
+                                            zIndex: '8',
                                             transition: 'all 0.1s ease-in-out 0.1s',
                                             display: showNode(show, hide) ? 'block' : 'none',
                                             ...gridPosition(gridCol, gridRow)
@@ -241,11 +256,19 @@ export class HomePageWrapper extends Component {
                             />
 
                             <div
+                                className='HomePageWrapper__left-content-wrapper'
                                 style={{
                                     flex: 'auto',
-                                    overflow: 'hidden',
+                                    overflow: 'hidden'
                                 }}
                             >
+                                {/* <Particles
+                                    id="tsparticles"
+                                    init={async (main) => {
+                                        await loadFull(main);
+                                    }}
+                                    options={particleOptions(currentVisiblePage)}
+                                /> */}
                                 {
                                     this.renderLeftContent()
                                 }
@@ -259,7 +282,7 @@ export class HomePageWrapper extends Component {
                         setVisible={(current) => this.setVisible(current)}
                     />
                 </div >
-                <BottomNavigation route={route} />
+                <BottomNavigation currentVisiblePage={currentVisiblePage} />
             </>
         )
     }

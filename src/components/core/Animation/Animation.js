@@ -40,15 +40,15 @@ animation-fill-mode: forwards;
 `;
 
 
-export const Animation = ({ children, duration, delay, type, style, height, width, timing }) => {
+export const Animation = ({ children, duration, delay, type, style, height, width, timing, animationStyle }) => {
     const AnimationKeyFrame = keyframes`${animation[type]}`;
     return (
         <DivTag style={{
-            ...style,
             height,
             width,
             display: 'flex',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            ...style
         }}>
             <AnimationDiv
                 AnimationKeyFrame={AnimationKeyFrame}
@@ -63,7 +63,8 @@ export const Animation = ({ children, duration, delay, type, style, height, widt
                     gridTemplateRows: '1fr 1fr 1fr',
                     height: '100%',
                     width: '100%',
-                    animationFillMode: 'forwards'
+                    animationFillMode: 'forwards',
+                    ...animationStyle
                 }}>
                 {children}
             </AnimationDiv>

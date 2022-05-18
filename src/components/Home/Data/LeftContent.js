@@ -1,6 +1,8 @@
 import { Animation } from '../../core/Animation';
-import { ParallaxBanner } from 'react-scroll-parallax';
 import colors from '../../../globalStyles.scss';
+import { ParallaxBanner } from 'react-scroll-parallax';
+
+
 
 
 
@@ -21,11 +23,12 @@ export const leftContent = [
     {
         id: 'about',
         header: 'ABOUT',
-        translateX: 2,
         width: '250%',
+        translateX: 2,
+        background: 'https://images.pexels.com/photos/221011/pexels-photo-221011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         subNodes: [
             {
-                show: -1,
+                show: 100,
                 hide: -1000,
                 height: '100%',
                 gridCol: '4',
@@ -42,8 +45,10 @@ export const leftContent = [
                         height={'100%'}
                         type={'fadeInRight'}
                     >
-                        <div style={{ ...flexCenter, ...gridPosition('1/end', '2') }}>
-                            {'@CODEANYWHEREWITHJULIAN'}
+                        <div style={{ zIndex: '999', color: colors.white, ...flexCenter, ...gridPosition('1/end', '2') }}>
+                            <a target={'_blank'} href={'https://www.instagram.com/codeanywherewithjulian/'}>
+                                {'@CODEANYWHEREWITHJULIAN'}
+                            </a>
                         </div>
                     </Animation>
                 )
@@ -147,14 +152,17 @@ export const leftContent = [
     {
         id: 'contact',
         header: 'CONTACT',
+        disabledParallax: true,
         subNodes: [
             {
-                show: 1,
-                hide: -500,
+                show: 4000,
+                hide: -4000,
                 height: '100%',
+                gridCol: '2',
+                gridRow: '2',
                 node: (
                     <Animation timing={'ease-out'} duration={'0.5s'} height={'100%'} type={'fadeIn'}>
-                        <div style={{ ...flexCenter, ...gridPosition('2', '2') }}>
+                        <div style={{ ...flexCenter, ...gridPosition('1/end', '2') }}>
                             {'center landing'}
                         </div>
                     </Animation>

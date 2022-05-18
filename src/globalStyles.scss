@@ -10,8 +10,8 @@ $header: #00607a;
 $black-50: rgba(0, 0, 0, 0.5);
 $overlay: linear-gradient(
   150deg,
-  #f5f5f563 0%,
-  #f5f5f5 50%,
+  #f5f5f5b2 0%,
+  rgba(71, 71, 71, 0.349) 50%,
   rgba(181, 23, 29, 0.1) 100%
 );
 $red: #f03d43;
@@ -69,12 +69,11 @@ p {
 }
 
 a {
-  color: $third;
-  font-family: $openSans;
-  font-size: 14px;
+  color: $white;
+  font-family: $roboto;
   text-decoration: none;
   &:hover {
-    color: $third;
+    color: $white;
     text-decoration: none;
   }
 }
