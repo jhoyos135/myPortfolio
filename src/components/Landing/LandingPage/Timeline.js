@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 
 import './style.scss'
-
+import colors from '../../../globalStyles.scss'
 
 const TimelineItem = ({ id, node, route, observe, unobserve }) => {
     const ref = useRef(null);
@@ -108,7 +108,10 @@ function Timeline(props) {
 
     return (
         rightContent.length > 0 && (
-            <div className="timeline-container HomePageWrapper__right">
+            <div className="timeline-container HomePageWrapper__right" style={{
+                position: 'relative',
+                overflow: 'hidden'
+            }}>
                 <div
                     style={{
                         height: '100%',
@@ -130,6 +133,31 @@ function Timeline(props) {
                             key={i}
                         />
                     ))}
+                </div>
+                <div
+                    style={{
+                        position: 'absolute',
+                        bottom: '0',
+                        right: '0',
+                        background: props.background,
+                        transform: 'rotate(-38deg) translate(36px, 10px)',
+                        transformOrigin: 'center',
+                        overflow: 'hidden',
+                        padding: '10px 60px'
+                        // zIndex: '0'
+                    }}
+                >
+                    <a
+                        href='https://github.com/jhoyos135/myPortfolio'
+                        target={'_blank'}
+                        style={{
+                            fontWeight: 'bold',
+                            fontFamily: 'Roboto',
+                            letterSpacing: colors.letterSpacing,
+                            color: props.color,
+                        }}>
+                        {'GITHUB'}
+                    </a>
                 </div>
             </div>
         )

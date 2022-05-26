@@ -7,6 +7,8 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { particleOptions } from './data';
 import { Animation } from '../../core/Animation';
+import chroma from 'chroma-js';
+
 import { getcolor } from './data';
 import { ParallaxProvider, Parallax, ParallaxBanner } from 'react-scroll-parallax';
 import './style.scss';
@@ -99,7 +101,8 @@ export class HomePageWrapper extends Component {
                     fontWeight: 'bold',
                     fontSize: '1.1em',
                     letterSpacing: colors.letterSpacing,
-                    color: getcolor(this.state.currentVisiblePage)
+                    color: chroma(getcolor(this.state.currentVisiblePage)).luminance() >= 0.5 ? 'black' : 'white'
+
                 }}
             >
                 {page}
@@ -143,7 +146,7 @@ export class HomePageWrapper extends Component {
                                     style={{
                                         margin: '15px',
                                         padding: '10px',
-                                        color: getcolor(this.state.currentVisiblePage),
+                                        color: chroma(getcolor(this.state.currentVisiblePage)).luminance() >= 0.5 ? colors.black : colors.white
                                     }}
                                     animationStyle={
                                         { display: 'flex' }
@@ -166,7 +169,7 @@ export class HomePageWrapper extends Component {
                                     bottom: '0',
                                     left: '0',
                                     right: '0',
-                                    filter: `hue-rotate(${this.state.scrollPosition[currentVisiblePage]}deg)`
+                                    filter: `hue-rotate(${this.state.scrollPosition[currentVisiblePage] / 1}deg)`
                                 }}
                                 layers={[{
                                     image: x.background,
@@ -179,12 +182,12 @@ export class HomePageWrapper extends Component {
                                 width: '100%',
                                 height: '100%',
                                 position: 'absolute',
-                                opacity: '0.8',
+                                opacity: '0.25',
                                 top: '0',
                                 bottom: '0',
                                 left: '0',
                                 right: '0',
-                                background: colors.overlay,
+                                background: getcolor(currentVisiblePage),
                                 zIndex: '0'
                             }} />
                             <Parallax
@@ -280,6 +283,8 @@ export class HomePageWrapper extends Component {
                         onScroll={this.onScroll}
                         ref={this.scrollRef}
                         setVisible={(current) => this.setVisible(current)}
+                        background={getcolor(currentVisiblePage)}
+                        color={chroma(getcolor(this.state.currentVisiblePage)).luminance() >= 0.5 ? colors.black : colors.white}
                     />
                 </div >
                 <BottomNavigation currentVisiblePage={currentVisiblePage} />

@@ -23,12 +23,12 @@ export const leftContent = [
     {
         id: 'about',
         header: 'ABOUT',
-        width: '250%',
-        translateX: 2,
+        width: '230%',
+        translateX: 1,
         background: 'https://images.pexels.com/photos/221011/pexels-photo-221011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         subNodes: [
             {
-                show: 100,
+                show: 0,
                 hide: -1000,
                 height: '100%',
                 gridCol: '4',
@@ -43,7 +43,7 @@ export const leftContent = [
                         timing={'ease-out'}
                         duration={'0.5s'}
                         height={'100%'}
-                        type={'fadeInRight'}
+                        type={'fadeIn'}
                     >
                         <div style={{ zIndex: '999', color: colors.white, ...flexCenter, ...gridPosition('1/end', '2') }}>
                             <a target={'_blank'} href={'https://www.instagram.com/codeanywherewithjulian/'}>

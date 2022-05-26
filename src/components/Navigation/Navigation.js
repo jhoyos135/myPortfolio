@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import NavigationPopOver from './NavigationPopOver';
 import Icon from './Icon';
 import { getcolor } from '../Landing/LandingPage/data';
+import chroma from 'chroma-js';
 
 
 const Navigation = ({ route, history, currentVisiblePage }) => {
@@ -42,7 +43,7 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
                 route !== 'home' && (
                     <div
                         style={{
-                            color: colors.white,
+                            color: chroma(getcolor(currentVisiblePage)).luminance() >= 0.5 ? colors.black : colors.white,
                             height: '100%'
                         }}>
                         <div className='menu'>

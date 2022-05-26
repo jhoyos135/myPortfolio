@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { data } from "./data";
 import BottomNavigation from '../../Navigation/BottomNavigation';
+import chroma from 'chroma-js';
 import colors from '../../../globalStyles.scss'
+
 import './style.scss';
 
 
@@ -12,7 +14,7 @@ export class LandingPageContainer extends Component {
         categories: [],
         isActive: null,
         isSelected: null,
-        color: "",
+        color: "white",
         background: '',
         header: '',
         transitionClass: false,
@@ -47,7 +49,7 @@ export class LandingPageContainer extends Component {
         if (!this.state.isSelected) {
             this.setState(() => ({
                 isActive: "",
-                color: "",
+                color: "white",
                 background: "",
                 header: ""
             }));
@@ -93,7 +95,9 @@ export class LandingPageContainer extends Component {
                     ...gridPlacement,
                     display: 'flex',
                     justifyContent: 'center',
-                    fontSize: '5em'
+                    fontSize: '5em',
+                    color: chroma(this.state.color).luminance() >= 0.5 ? 'black' : 'white'
+
                 }}>
                     {item}
                 </h1>
@@ -134,7 +138,13 @@ export class LandingPageContainer extends Component {
                         alt={''}
                     /> */}
                     {/* Front of the square */}
-                    <h1 className="front-title">{item.frontText}</h1>
+                    <h1
+                        style={{
+                            color: chroma(item.color).luminance() >= 0.5 ? 'black' : 'white'
+                        }}
+                        className="front-title">
+                        {item.frontText}
+                    </h1>
                     <span className="custom-border"></span>
                 </div>
             );
