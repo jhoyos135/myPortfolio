@@ -1,6 +1,5 @@
 import { Animation } from '../../core/Animation';
 import colors from '../../../globalStyles.scss';
-import { ParallaxBanner } from 'react-scroll-parallax';
 
 
 

@@ -309,12 +309,17 @@ hr {
 }
 
 .App {
+  a:hover ~ .cursor,
+  h1:hover ~ .cursor {
+    transform: scale(5) !important;
+  }
   .cursor {
     div:first-child {
-      background-color: $black_50 !important;
+      background-color: #fff !important;
+      mix-blend-mode: difference;
     }
     div:last-child {
-      background-color: $black !important;
+      background-color: #000 !important;
     }
   }
 }
