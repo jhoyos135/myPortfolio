@@ -27,7 +27,7 @@ export const leftContent = [
         background: 'https://images.pexels.com/photos/221011/pexels-photo-221011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         subNodes: [
             {
-                show: 0,
+                show: 100,
                 hide: -1000,
                 height: '100%',
                 gridCol: '4',

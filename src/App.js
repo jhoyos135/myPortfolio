@@ -10,13 +10,17 @@ function App() {
         className='cursor'
       >
         <AnimatedCursor
-          innerSize={10}
+          innerSize={5}
           outerSize={15}
           outerAlpha={0.5}
-          innerScale={0.6}
+          innerAlpha={0.5}
+          innerScale={1}
+          trailingSpeed={3}
           outerScale={4}
+          color="255,255,255"
+
           clickables={[
-            'h1',
+            '.HomePageWrapper__left-content-wrapper',
             'a',
             'input[type="text"]',
             'input[type="email"]',

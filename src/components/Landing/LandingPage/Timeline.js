@@ -17,7 +17,7 @@ const TimelineItem = ({ id, node, route, observe, unobserve }) => {
     return (
         <div
             style={{
-                minHeight: '1500px'
+                minHeight: '100%'
             }}
             ref={ref}
             className={`timeline-item-${id}`}
