@@ -20,11 +20,6 @@ const PlayGround = () => {
                 tab='js,result'
             />
             <CodePenDisplay
-                header='Drawing Board'
-                hash={'byOgOL'}
-                tab='js,result'
-            />
-            <CodePenDisplay
                 header='Panel Gallery'
                 hash={'LoMxJV'}
                 tab='js,result'

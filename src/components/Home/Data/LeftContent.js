@@ -1,5 +1,6 @@
 import { Animation } from '../../core/Animation';
 import colors from '../../../globalStyles.scss';
+import Board from '../Board';
 
 
 
@@ -97,7 +98,7 @@ export const leftContent = [
         header: 'EXPERIENCE',
         subNodes: [
             {
-                show: 1,
+                show: 1000,
                 hide: -500,
                 height: '100%',
                 node: (
@@ -113,36 +114,20 @@ export const leftContent = [
     {
         id: 'playground',
         header: 'PLAYGROUND',
+        width: '150%',
         subNodes: [
             {
                 show: 1000,
-                hide: 60,
+                hide: -4000,
                 height: '100%',
+                gridCol: '1/end',
+                gridRow: '1/end',
                 node: (
                     <Animation
                         height={'100%'}
                         type={'fadeIn'}
                     >
-                        <div
-                            style={{
-                                ...flexCenter,
-                                ...gridPosition('2', '2')
-                            }}
-                        >
-                            {'test'}
-                        </div>
-                    </Animation>
-                )
-            },
-            {
-                show: 1,
-                hide: -500,
-                height: '100%',
-                node: (
-                    <Animation timing={'ease-out'} duration={'0.5s'} height={'100%'} type={'fadeIn'}>
-                        <div style={{ ...flexCenter, ...gridPosition('2', '2') }}>
-                            {'center landing'}
-                        </div>
+                        <Board />
                     </Animation>
                 )
             },
