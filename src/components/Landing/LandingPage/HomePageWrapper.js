@@ -169,7 +169,7 @@ export class HomePageWrapper extends Component {
                                     bottom: '0',
                                     left: '0',
                                     right: '0',
-                                    filter: `hue-rotate(${this.state.scrollPosition[currentVisiblePage] / 1}deg)`
+                                    filter: x?.disableHue ? 'none' : `hue-rotate(${this.state.scrollPosition[currentVisiblePage] / 1}deg)`
                                 }}
                                 layers={[{
                                     image: x.background,

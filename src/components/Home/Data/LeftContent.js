@@ -153,6 +153,7 @@ export const leftContent = [
         id: 'contact',
         header: 'CONTACT',
         disabledParallax: true,
+        disableHue: true,
         subNodes: [
             {
                 show: 4000,
@@ -163,7 +164,12 @@ export const leftContent = [
                 node: (
                     <Animation timing={'ease-out'} duration={'0.5s'} height={'100%'} type={'fadeIn'}>
                         <div style={{ ...flexCenter, ...gridPosition('1/end', '2') }}>
-                            {'center landing'}
+                            <img
+                                height={'100%'}
+                                width={'100%'}
+                                alt='inta-code'
+                                src={'https://s3.us-east-2.amazonaws.com/codeanywherewithjulian.com/insta-code-white.jpg'}
+                            />
                         </div>
                     </Animation>
                 )

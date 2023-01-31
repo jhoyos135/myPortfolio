@@ -5,7 +5,7 @@ const BottomNavigation = ({ currentVisiblePage }) => {
     return (
         <div className='BottomNavigation'>
             <p className='BottomNavigation__text'>
-                {currentVisiblePage !== 'about' && (
+                {(currentVisiblePage !== 'about' && currentVisiblePage !== 'contact') && (
                     <a target={'_blank'} href={'https://www.instagram.com/codeanywherewithjulian/'}>
                         {'@codeanywherewithjulian'}
                     </a>
