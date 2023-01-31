@@ -23,15 +23,16 @@ export const leftContent = [
         id: 'about',
         header: 'ABOUT',
         width: '230%',
-        translateX: 1,
+        translateX: 3,
+        translateY: 50,
         background: 'https://images.pexels.com/photos/221011/pexels-photo-221011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         subNodes: [
             {
                 show: 100,
-                hide: -1000,
+                hide: -1700,
                 height: '100%',
                 gridCol: '4',
-                gridRow: '2',
+                gridRow: '3',
                 node: (
                     <Animation
                         style={{
@@ -40,7 +41,7 @@ export const leftContent = [
                             letterSpacing: colors.letterSpacing
                         }}
                         timing={'ease-out'}
-                        duration={'0.5s'}
+                        duration={'1s'}
                         height={'100%'}
                         type={'fadeIn'}
                     >

@@ -174,7 +174,7 @@ export class HomePageWrapper extends Component {
                                 layers={[{
                                     image: x.background,
                                     speed: 1,
-                                    translateY: this.state.scrollPosition[currentVisiblePage] / 30
+                                    translateY: this.state.scrollPosition[currentVisiblePage] / x?.translateY
                                 }]}
                                 className="aspect-[2/1]"
                             />
