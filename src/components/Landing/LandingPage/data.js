@@ -7,7 +7,7 @@ export const getImage = (section) => {
 export const data = [
     { id: 1, section: 'about', route: 'home', color: '#2D60B4', frontText: 'ABOUT', backText: 'Come in, and find out who I am' },
     { id: 2, section: 'projects', route: 'home', color: '#357266', frontText: 'PROJECTS', backText: 'Take a look at some of my selected projects' },
-    { id: 3, section: 'experience', route: 'home', color: '#B5171D', frontText: 'EXPERIENCE', backText: 'Where I\'ve been, where I am and where I want to go.' },
+    { id: 3, section: 'blog', route: 'home', color: '#B5171D', frontText: 'BLOG', backText: 'Where I\'ve been, where I am and where I want to go.' },
     { id: 4, section: 'playground', route: 'home', color: '#FFF4E9', background: getImage('playground'), frontText: 'PLAYGROUND', backText: 'A collection of front-end coding. These are a mix of features from previous work, practice and side projects.' },
     { id: 5, section: 'contact', route: 'home', color: '#CC9200', frontText: 'CONTACT', backText: 'Can\'t wait to hear from you' }
 ];

@@ -91,26 +91,26 @@ const Navigation = ({ route, history, currentVisiblePage }) => {
                             </div>
                             <NavigationPopOver text='PROJECTS' hover={hover} target={'projectsItem'} />
                             <div
-                                id={'experienceItem'}
+                                id={'blogItem'}
                                 style={itemStyles}
-                                onMouseEnter={() => onMouseEnter('experience')}
+                                onMouseEnter={() => onMouseEnter('blog')}
                                 onMouseLeave={() => onMouseLeave()}
-                                onClick={() => scrollTo('experience')}
+                                onClick={() => scrollTo('blog')}
                                 className={classnames({
-                                    'active': currentPage === 'experience',
+                                    'active': currentPage === 'blog',
                                     'item': true,
-                                    'hover': hover === 'experience'
+                                    'hover': hover === 'blog'
                                 })}>
                                 <Icon
                                     fontSize={'2em'}
-                                    active={currentPage === 'experience'}
+                                    active={currentPage === 'blog'}
                                     classNames='fa-solid fa-briefcase'
                                     styles={{
                                         fontSize: '2em'
                                     }}
                                 />
                             </div>
-                            <NavigationPopOver text='EXPERIENCE' hover={hover} target={'experienceItem'} />
+                            <NavigationPopOver text='BLOG' hover={hover} target={'blogItem'} />
                             <div
                                 id={'playgroundItem'}
                                 style={itemStyles}

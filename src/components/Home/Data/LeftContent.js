@@ -94,8 +94,8 @@ export const leftContent = [
         ]
     },
     {
-        id: 'experience',
-        header: 'EXPERIENCE',
+        id: 'blog',
+        header: 'BLOG',
         subNodes: [
             {
                 show: 1000,

@@ -76,7 +76,7 @@ export class LandingPageContainer extends Component {
         console.log(item)
         const gridPlacement = item === 'ABOUT' ? { gridColumn: '2/4', gridRow: '1/2' } :
             item === 'PROJECTS' ? { gridColumn: '2/3', gridRow: '2/3' } :
-                item === 'EXPERIENCE' ? { gridColumn: '1/3', gridRow: '1/3' } :
+                item === 'BLOG' ? { gridColumn: '1/3', gridRow: '1/3' } :
                     item === 'PLAYGROUND' ? { gridColumn: '1/4', gridRow: '1/2' } :
                         { gridColumn: '1/4', gridRow: '1/2' }
         return (

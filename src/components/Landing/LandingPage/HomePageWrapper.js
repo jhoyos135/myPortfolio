@@ -86,7 +86,7 @@ export class HomePageWrapper extends Component {
 
         const page = currentVisiblePage === 'about' ? '01/05'
             : currentVisiblePage === 'projects' ? '02/05'
-                : currentVisiblePage === 'experience' ? '03/05'
+                : currentVisiblePage === 'blog' ? '03/05'
                     : currentVisiblePage === 'playground' ? '04/05'
                         : currentVisiblePage === 'contact' ? '05/05'
                             : ''

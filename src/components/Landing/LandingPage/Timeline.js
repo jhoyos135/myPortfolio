@@ -88,7 +88,7 @@ function Timeline(props) {
             (visible['timeline-item-1'] === true && visible['timeline-item-2'] === true) ||
             (visible['timeline-item-2'] === true)
         ) {
-            props.setVisible('experience')
+            props.setVisible('blog')
         }
         if (
             (visible['timeline-item-2'] === true && visible['timeline-item-3'] === true) ||

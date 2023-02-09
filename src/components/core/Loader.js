@@ -1,6 +1,8 @@
 import React from 'react';
 import GridLoader from "react-spinners/GridLoader";
 import { getcolor } from '../Landing/LandingPage/data';
+import chroma from 'chroma-js';
+
 
 
 const Loader = ({ loading, currentVisiblePage }) => {
@@ -15,7 +17,7 @@ const Loader = ({ loading, currentVisiblePage }) => {
             justifyContent: 'center',
             alignItems: 'center'
         }}>
-            <GridLoader color={'#fff'} loading={loading} />
+            <GridLoader color={chroma(getcolor(currentVisiblePage)).luminance() >= 0.5 ? 'black' : 'white'} loading={loading} />
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import Layout from "../Layout";
-import { About, PlayGround } from "../../RightContent";
+import { About, PlayGround, Blog } from "../../RightContent";
 
 
 export const rightContent = [
@@ -25,12 +25,10 @@ export const rightContent = [
     },
     {
         id: 2,
-        route: 'experience',
+        route: 'blog',
         node: (
             <Layout>
-                <div>
-                    {'experience'}
-                </div>
+                <Blog />
             </Layout>
         )
     },
